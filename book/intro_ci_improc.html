@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -409,13 +409,20 @@ there seems to be lot of confusion about the difference about these fields of co
 <p><strong>Computer graphics</strong></p>
 <p>In Computer Graphics are introduced as drawings or any type of sketch that can represent some meaningful information in the form of pictures. Computer graphics is used widely in the software and computer field when there is a set of images that needs to be created or manipulated such as in digital films, the entertainment industry, or digital photography.</p>
 <p><strong>Image processing and computer vision</strong></p>
-<p align="center">
+<figure class="align-default">
+<img alt="../_images/intro1.png" src="../_images/intro1.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/intro2.png" src="../_images/intro2.png" />
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro1.png"  width="600">
 </p>
+
 <p align="center">
   <img src="immagini_sorgente\intro2.png"  width="600">
    <p align="center"> Image processing and computer vision
-</p><p><strong>Image processing and computer graphics</strong></p>
+</p> --><p><strong>Image processing and computer graphics</strong></p>
 <p align="center">
   <img src="immagini_sorgente\intro3.png"  width="600">
 </p>
@@ -428,17 +435,23 @@ there seems to be lot of confusion about the difference about these fields of co
 <li><p>Contrary to popular believes, sensors  almost never directly generate usable images.</p></li>
 <li><p>Real imaging systems require that raw sensors date be processed using algorithms to form the resulting images.</p></li>
 </ul>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/intro5.png"><img alt="../_images/intro5.png" src="../_images/intro5.png" style="width: 300px;" />
-</a>
+<figure class="align-default">
+<img alt="../_images/intro5.png" src="../_images/intro5.png" />
 </figure>
 <p><strong>Why a math course on Computational Imaging in the Computer Science LM?</strong></p>
-<p align="center">
+<figure class="align-default">
+<img alt="../_images/intro6.png" src="../_images/intro6.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/intro7.png" src="../_images/intro7.png" />
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro6.png"  width="600">
 </p>
+
 <p align="center">
   <img src="immagini_sorgente\intro7.png"  width="600">
-</p><p><strong>Organization of the CI course</strong></p>
+</p> --><p><strong>Organization of the CI course</strong></p>
 <p>Module I:</p>
 <p>Introduction to computational imaging (CI)
 CI as inverse problem
@@ -456,33 +469,58 @@ Learnt model based reconstruction methods (a mention)</p>
 <li><p>A discrete (or digital) image A is a matrix of size M xN obtained by discretinzing the function f.</p></li>
 <li><p>The intersection between a row and a column is called pixel</p></li>
 </ul>
-<p align="center">
+<figure class="align-default">
+<img alt="../_images/intro8.png" src="../_images/intro8.png" />
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro8.png"  width="600">
-</p>
+</p> -->
 <p>The value assigned to every pixel is the average brightness in the pixel rounded to the nearest integer value. The process of representing the amplitude of the 2D signal at a given coordinate as an integer value with L different gray levels is usually referred to as amplitude quantization or simply quantization.</p>
 <p>In the case of <strong>color</strong> images, three values are associated to each pixel, for example in the R(red)G(green)B(blue) (RGB) scale.
 Many techniques developed for the single channel image are repeated on the three channels .</p>
-<p align="center">
+<figure class="align-default">
+<img alt="../_images/intro9.png" src="../_images/intro9.png" />
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro9.png"  width="600">
-</p>
+</p> -->
 <p>Example of RGB channels of a color image.</p>
-<p align="center">
+<figure class="align-default">
+<img alt="../_images/intro10.png" src="../_images/intro10.png" />
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro10.png"  width="600">
-</p>
+</p> -->
 <p><strong>Image file formats</strong></p>
-<p align="center">
+<figure class="align-default">
+<img alt="../_images/intro11.png" src="../_images/intro11.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/intro12.png" src="../_images/intro12.png" />
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro11.png"  width="800">
 </p>
-<p>File formats of medical images</p>
+
+File formats of medical images
+
 <p align="center">
   <img src="immagini_sorgente\intro12.png"  width="600">
-</p><p>A DICOM file (Digital Imaging and Communications in Medicine) is a standard format used for medical images (CT, MRI, ultrasound, X-ray, etc.) that combines both the image and clinical/technical information in a single file. It’s not just an image—it’s a structured container.</p>
-<p align="center">
+</p> --><p>A DICOM file (Digital Imaging and Communications in Medicine) is a standard format used for medical images (CT, MRI, ultrasound, X-ray, etc.) that combines both the image and clinical/technical information in a single file. It’s not just an image—it’s a structured container.</p>
+<figure class="align-default">
+<img alt="../_images/intro13.png" src="../_images/intro13.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/intro15.png" src="../_images/intro15.png" />
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro13.png"  width="700">
 </p>
+
+
 <p align="center">
   <img src="immagini_sorgente\intro15.png"  width="600">
-</p>
+</p> -->
 <p>In python, we can use the pydicom library to explore both metadata and the image in the dicom file.</p>
 </section>
 <section id="how-to-read-images-in-python">
@@ -911,17 +949,31 @@ from the compressed file.</p>
 <p><strong>Lossy compression</strong></p>
 <p>Definition: Compression where some information is discarded, and the original image cannot be perfectly
 recovered.</p>
- <p align="center">
+<figure class="align-default">
+<img alt="../_images/intro16.png" src="../_images/intro16.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/intro17.png" src="../_images/intro17.png" />
+</figure>
+ <!-- <p align="center">
   <img src="immagini_sorgente\intro16.png"  width="700">
 </p>
+
 <p align="center">
   <img src="immagini_sorgente\intro17.png"  width="700">
-</p>
+</p> -->
 </section>
 <section id="digital-images">
 <h1>Digital images<a class="headerlink" href="#digital-images" title="Link to this heading">#</a></h1>
 <p><strong>Photographic images</strong></p>
-<div style="display:flex; gap:20px;">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/intro19.png"><img alt="../_images/intro19.png" src="../_images/intro19.png" style="width: 30%;" />
+</a>
+</figure>
+<figure class="align-default">
+<img alt="../_images/intro20.png" src="../_images/intro20.png" />
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
     <img src="immagini_sorgente/intro19.png" width="250">
     <p align="center">
@@ -933,34 +985,55 @@ recovered.</p>
     <p align="center">
     Color (three channels) image.
     </p>
-  </div>
-</div>
+  </div> -->
+<!-- </div> -->
 <p><strong>Medical images</strong></p>
 <p>Medical images are usually gray-scale images, where the pixel intensity represents the density of the material (or the attenuation coefficient, which is proportional to the density).</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/intro21.png"><img alt="../_images/intro21.png" src="../_images/intro21.png" style="width: 50%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro21.png"  width="500">
-</p>
+</p> -->
 <p>Medical images can be stacked in a 2D+1 volume, which represents the 3D  object.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/intro22.jpg"><img alt="../_images/intro22.jpg" src="../_images/intro22.jpg" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro22.png"  width="500">
-</p><p><strong>Microscopy images</strong></p>
+</p> --><p><strong>Microscopy images</strong></p>
 <p>Images from microscopy can be quite different, since there are different kinds of microscopies.
 They can be grayscale or color images.</p>
-<p align="center">
+<figure class="align-default">
+<img alt="../_images/intro23.jpg" src="../_images/intro23.jpg" />
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/intro24.jpg"><img alt="../_images/intro24.jpg" src="../_images/intro24.jpg" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro23.jpg"  width="500">
    <p align="center"> phase contrast microscopy
 </p>
+
 <p align="center">
   <img src="immagini_sorgente\intro24.jpg"  width="500">
    <p align="center"> flourescence microscopy
-</p>
+</p> -->
 <p><strong>Thermal images</strong></p>
 <p>Thermal images are one-channel images, where the pixel intensity represents the temperature.
 They are usually displayed in a color scale, not in  grayscale, to evidence hotter and colder regions.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/intro25.jpg"><img alt="../_images/intro25.jpg" src="../_images/intro25.jpg" style="width: 60%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro25.jpg"  width="400">
    <p align="center"> thermal image
 </p>
+ -->
 <p><strong>Hyperspectral images</strong></p>
 <p>Hyperspectral images are tensor images where three dimensions (for color images) contain the  color and one more dimensions contains spectral information.
 Examples of spectral information:</p>
@@ -971,14 +1044,23 @@ Examples of spectral information:</p>
 <li><p>Physics information: wavelength
 ….</p></li>
 </ul>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/intro26.jpg"><img alt="../_images/intro26.jpg" src="../_images/intro26.jpg" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/intro27.jpg"><img alt="../_images/intro27.jpg" src="../_images/intro27.jpg" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\intro26.jpg"  width="500">
    <p align="center"> wavelength information
 </p>
+
 <p align="center">
   <img src="immagini_sorgente\intro27.jpg"  width="500">
    <p align="center"> environmental information
-</p></section>
+</p> --></section>
 
     <script type="text/x-thebe-config">
     {
