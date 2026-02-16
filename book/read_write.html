@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Computational Imaging 2025-26 Module I</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/read_write';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/compim.png" class="logo__image only-light" alt="Computational Imaging 2025-26 Module I - Home"/>
+    <script>document.write(`<img src="../_static/compim.png" class="logo__image only-dark" alt="Computational Imaging 2025-26 Module I - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/read_write.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/read_write.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># use OpenCV </span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+
+<span class="c1">#img_cv = cv2.imread(&quot;peppers_color.tif&quot;)</span>
+<span class="n">img_cv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;images.jpeg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OpenCV:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">img_cv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; shape:&quot;</span><span class="p">,</span> <span class="n">img_cv</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; dtype:&quot;</span><span class="p">,</span> <span class="n">img_cv</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; min/max:&quot;</span><span class="p">,</span> <span class="n">img_cv</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">img_cv</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+
+<span class="c1"># OpenCV visualization (desktop only)</span>
+<span class="c1"># cv2.imshow(&quot;OpenCV image&quot;, img_cv)</span>
+<span class="c1"># cv2.waitKey(0)</span>
+<span class="c1"># cv2.destroyAllWindows()</span>
+
+<span class="c1"># Save the image</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&quot;images_cv.jpeg&quot;</span><span class="p">,</span> <span class="n">img_cv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OpenCV:
+&lt;class &#39;numpy.ndarray&#39;&gt;
+ shape: (451, 679, 3)
+ dtype: uint8
+ min/max: 0 255
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Use ImageIO</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">imageio.v2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">imageio</span>
+
+<span class="c1">#img_io = imageio.imread(&quot;peppers_color.tif&quot;)</span>
+<span class="n">img_io</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;images.jpeg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ImageIO:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">img_io</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; shape:&quot;</span><span class="p">,</span> <span class="n">img_io</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; dtype:&quot;</span><span class="p">,</span> <span class="n">img_io</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; min/max:&quot;</span><span class="p">,</span> <span class="n">img_io</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">img_io</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+
+<span class="c1"># --- Check the difference between the two arrays  (convert OpenCV in RGB) ---</span>
+<span class="n">img_cv_rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img_cv</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">img_cv_rgb</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">-</span> <span class="n">img_io</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Maximum difference between OpenCV (converted  in RGB) and  Imageio:&quot;</span><span class="p">,</span> <span class="n">diff</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="c1"># Save the image</span>
+
+<span class="c1">#Make sure your array dtype is np.uint8 for normal 8-bit images.</span>
+
+<span class="c1"># If you have floating-point arrays (0–1), scale them to 0–255 first:</span>
+
+<span class="c1">#image_uint8 = (image_float * 255).astype(np.uint8)</span>
+<span class="n">imageio</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s2">&quot;output_image_imageio.jpeg&quot;</span><span class="p">,</span> <span class="n">img_io</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ImageIO:
+&lt;class &#39;numpy.ndarray&#39;&gt;
+ shape: (451, 679, 3)
+ dtype: uint8
+ min/max: 0 255
+
+Maximum difference between OpenCV (converted  in RGB) and  Imageio: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use pyplot</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1">#img_plt = plt.imread(&quot;peppers_color.tif&quot;)</span>
+<span class="n">img_plt</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;images.jpeg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matplotlib:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; shape:&quot;</span><span class="p">,</span> <span class="n">img_plt</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; dtype:&quot;</span><span class="p">,</span> <span class="n">img_plt</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; min/max:&quot;</span><span class="p">,</span> <span class="n">img_plt</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">img_plt</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+
+<span class="c1"># Matplotlib visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_plt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Matplotlib image&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Save </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s2">&quot;image_plt.jpeg&quot;</span><span class="p">,</span> <span class="n">img_plt</span><span class="p">)</span>  
+
+<span class="c1"># if the image is grayscale: </span>
+<span class="c1">#plt.imsave(&quot;image_plt_bn.jpeg&quot;, img_plt,cmap=&quot;gray&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib:
+ shape: (451, 679, 3)
+ dtype: uint8
+ min/max: 0 255
+</pre></div>
+</div>
+<img alt="../_images/6e786653b365f59b8a1a04cc21b68b725e3ca26abab618765eb6d49a92cddb3e.png" src="../_images/6e786653b365f59b8a1a04cc21b68b725e3ca26abab618765eb6d49a92cddb3e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> 
+
+<span class="c1"># Dicom file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pydicom</span>
+
+<span class="c1"># Read  dicom file</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">pydicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="s2">&quot;proj.dcm&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show the main metadata</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+<span class="c1"># Show the image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">pixel_array</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">ds1</span> <span class="o">=</span> <span class="n">pydicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="s2">&quot;reco.dcm&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show the main metadata</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset.file_meta -------------------------------
+(0002,0000) File Meta Information Group Length  UL: 206
+(0002,0001) File Meta Information Version       OB: b&#39;\x00\x01&#39;
+(0002,0002) Media Storage SOP Class UID         UI: Digital Mammography X-Ray Image Storage - For Processing
+(0002,0003) Media Storage SOP Instance UID      UI: 2.16.840.1.113669.632.25.1.103374.20240502120725128.10.3.5
+(0002,0010) Transfer Syntax UID                 UI: Explicit VR Little Endian
+(0002,0012) Implementation Class UID            UI: 1.2.276.0.7230010.3.0.3.6.3
+(0002,0013) Implementation Version Name         SH: &#39;OFFIS_DCMTK_363&#39;
+-------------------------------------------------
+(0008,0005) Specific Character Set              CS: &#39;ISO_IR 100&#39;
+(0008,0008) Image Type                          CS: [&#39;ORIGINAL&#39;, &#39;PRIMARY&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;]
+(0008,0016) SOP Class UID                       UI: Digital Mammography X-Ray Image Storage - For Processing
+(0008,0018) SOP Instance UID                    UI: 2.16.840.1.113669.632.25.1.103374.20240502120725128.10.3.5
+(0008,0020) Study Date                          DA: &#39;20240502&#39;
+(0008,0021) Series Date                         DA: &#39;20240502&#39;
+(0008,0022) Acquisition Date                    DA: &#39;20240502&#39;
+(0008,0023) Content Date                        DA: &#39;20240502&#39;
+(0008,0030) Study Time                          TM: &#39;090232&#39;
+(0008,0031) Series Time                         TM: &#39;120715&#39;
+(0008,0032) Acquisition Time                    TM: &#39;120725&#39;
+(0008,0033) Content Time                        TM: &#39;120725&#39;
+(0008,0050) Accession Number                    SH: &#39;&#39;
+(0008,0060) Modality                            CS: &#39;MG&#39;
+(0008,0068) Presentation Intent Type            CS: &#39;FOR PROCESSING&#39;
+(0008,0070) Manufacturer                        LO: &#39;IMS GIOTTO S.p.A.&#39;
+(0008,0090) Referring Physician&#39;s Name          PN: &#39;&#39;
+(0008,1010) Station Name                        SH: &#39;GIOTTO CLASS&#39;
+(0008,1050) Performing Physician&#39;s Name         PN: &#39;&#39;
+(0008,1070) Operators&#39; Name                     PN: &#39;&#39;
+(0008,1090) Manufacturer&#39;s Model Name           LO: &#39;GIOTTO CLASS&#39;
+(0008,2218)  Anatomic Region Sequence  1 item(s) ---- 
+   (0008,0100) Code Value                          SH: &#39;T-04000&#39;
+   (0008,0102) Coding Scheme Designator            SH: &#39;SRT&#39;
+   (0008,0104) Code Meaning                        LO: &#39;Breast&#39;
+   ---------
+(0008,3010) Irradiation Event UID               UI: 2.16.840.1.113669.632.25.1.103374.20240502120715307.8
+(0010,0010) Patient&#39;s Name                      PN: &#39;DBT^31 PROJ&#39;
+(0010,0020) Patient ID                          LO: &#39;MADAVERO&#39;
+(0010,0030) Patient&#39;s Birth Date                DA: &#39;19840328&#39;
+(0010,0040) Patient&#39;s Sex                       CS: &#39;F&#39;
+(0010,1010) Patient&#39;s Age                       AS: &#39;040Y&#39;
+(0010,1020) Patient&#39;s Size                      DS: None
+(0010,1030) Patient&#39;s Weight                    DS: None
+(0018,0015) Body Part Examined                  CS: &#39;BREAST&#39;
+(0018,0060) KVP                                 DS: &#39;27&#39;
+(0018,1000) Device Serial Number                LO: &#39;103374&#39;
+(0018,1020) Software Versions                   LO: &#39;Raffaello 4.19.8.0 - IMSProc 4.17.3.2 - Tiziano 4.15.0.3&#39;
+(0018,1030) Protocol Name                       LO: &#39;Mammography&#39;
+(0018,1110) Distance Source to Detector         DS: &#39;688.9&#39;
+(0018,1111) Distance Source to Patient          DS: &#39;672.0&#39;
+(0018,1114) Estimated Radiographic Magnificatio DS: &#39;1.000&#39;
+(0018,1147) Field of View Shape                 CS: &#39;RECTANGLE&#39;
+(0018,1149) Field of View Dimension(s)          IS: [297, 233]
+(0018,1150) Exposure Time                       IS: &#39;38&#39;
+(0018,1151) X-Ray Tube Current                  IS: &#39;104&#39;
+(0018,1152) Exposure                            IS: &#39;4&#39;
+(0018,1153) Exposure in uAs                     IS: &#39;4050&#39;
+(0018,1160) Filter Type                         SH: &#39;STRIP&#39;
+(0018,1164) Imager Pixel Spacing                DS: [0.0829, 0.0829]
+(0018,1166) Grid                                CS: &#39;NONE&#39;
+(0018,1190) Focal Spot(s)                       DS: &#39;0.3&#39;
+(0018,1191) Anode Target Material               CS: &#39;TUNGSTEN&#39;
+(0018,11A0) Body Part Thickness                 DS: &#39;40&#39;
+(0018,11A2) Compression Force                   DS: &#39;9.8&#39;
+(0018,11A4) Paddle Description                  LO: &#39;24x30&#39;
+(0018,1405) Relative X-Ray Exposure             IS: &#39;2075&#39;
+(0018,1508) Positioner Type                     CS: &#39;MAMMOGRAPHIC&#39;
+(0018,1510) Positioner Primary Angle            DS: &#39;0&#39;
+(0018,1511) Positioner Secondary Angle          DS: &#39;0&#39;
+(0018,1530) Detector Primary Angle              DS: &#39;0&#39;
+(0018,1531) Detector Secondary Angle            DS: &#39;0.907889&#39;
+(0018,5101) View Position                       CS: &#39;CC&#39;
+(0018,7001) Detector Temperature                DS: &#39;32&#39;
+(0018,7004) Detector Type                       CS: &#39;DIRECT&#39;
+(0018,7005) Detector Configuration              CS: &#39;AREA&#39;
+(0018,700A) Detector ID                         SH: &#39;AP01-23387&#39;
+(0018,700C) Date of Last Detector Calibration   DA: &#39;20240418&#39;
+(0018,701A) Detector Binning                    DS: [1, 1]
+(0018,7020) Detector Element Physical Size      DS: [0.085, 0.085]
+(0018,7022) Detector Element Spacing            DS: [0.085, 0.085]
+(0018,702B) Detector Manufacturer&#39;s Model Name  LO: &#39;SCREEN+&#39;
+(0018,7050) Filter Material                     CS: &#39;SILVER&#39;
+(0018,7052) Filter Thickness Minimum            DS: &#39;0.05&#39;
+(0018,7054) Filter Thickness Maximum            DS: &#39;0.05&#39;
+(0018,7060) Exposure Control Mode               CS: &#39;AUTOMATIC&#39;
+(0018,7062) Exposure Control Mode Description   LT: Array of 184 elements
+(0018,8151) X-Ray Tube Current in uA            DS: &#39;104400&#39;
+(0018,9559) Positioner Primary Angle Direction  CS: &#39;CW&#39;
+(0020,000D) Study Instance UID                  UI: 2.16.840.1.113669.632.25.1.103374.20240502090232863.1
+(0020,000E) Series Instance UID                 UI: 2.16.840.1.113669.632.25.1.103374.20240502120715244.2.5
+(0020,0010) Study ID                            SH: &#39;581-193&#39;
+(0020,0011) Series Number                       IS: &#39;18&#39;
+(0020,0013) Instance Number                     IS: &#39;10&#39;
+(0020,0020) Patient Orientation                 CS: [&#39;P&#39;, &#39;L&#39;]
+(0020,0052) Frame of Reference UID              UI: 2.16.840.1.113669.632.25.1.103374.20240502120715286.6
+(0020,0062) Image Laterality                    CS: &#39;R&#39;
+(0020,1040) Position Reference Indicator        LO: &#39;&#39;
+(0028,0002) Samples per Pixel                   US: 1
+(0028,0004) Photometric Interpretation          CS: &#39;MONOCHROME1&#39;
+(0028,0010) Rows                                US: 3580
+(0028,0011) Columns                             US: 2812
+(0028,0100) Bits Allocated                      US: 16
+(0028,0101) Bits Stored                         US: 13
+(0028,0102) High Bit                            US: 12
+(0028,0103) Pixel Representation                US: 0
+(0028,0120) Pixel Padding Value                 US: 7500
+(0028,0121) Pixel Padding Range Limit           US: 1952
+(0028,0300) Quality Control Image               CS: &#39;YES&#39;
+(0028,0301) Burned In Annotation                CS: &#39;NO&#39;
+(0028,1040) Pixel Intensity Relationship        CS: &#39;LIN&#39;
+(0028,1041) Pixel Intensity Relationship Sign   SS: 1
+(0028,1052) Rescale Intercept                   DS: &#39;0&#39;
+(0028,1053) Rescale Slope                       DS: &#39;1&#39;
+(0028,1054) Rescale Type                        LO: &#39;US&#39;
+(0028,1300) Breast Implant Present              CS: &#39;NO&#39;
+(0028,1350) Partial View                        CS: &#39;NO&#39;
+(0028,2110) Lossy Image Compression             CS: &#39;00&#39;
+(0040,0244) Performed Procedure Step Start Date DA: &#39;20240502&#39;
+(0040,0245) Performed Procedure Step Start Time TM: &#39;090232&#39;
+(0040,0253) Performed Procedure Step ID         SH: &#39;20231333&#39;
+(0040,0254) Performed Procedure Step Descriptio LO: &#39;&#39;
+(0040,0314) Half Value Layer                    DS: &#39;0.518&#39;
+(0040,0316) Organ Dose                          DS: &#39;0.00062&#39;
+(0040,0318) Organ Exposed                       CS: &#39;BREAST&#39;
+(0040,0555)  Acquisition Context Sequence  0 item(s) ---- 
+(0040,8302) Entrance Dose in mGy                DS: &#39;0.179&#39;
+(0040,8303) Entrance Dose Derivation            CS: &#39;IAK&#39;
+(0054,0220)  View Code Sequence  1 item(s) ---- 
+   (0008,0100) Code Value                          SH: &#39;R-10242&#39;
+   (0008,0102) Coding Scheme Designator            SH: &#39;SRT&#39;
+   (0008,0104) Code Meaning                        LO: &#39;cranio-caudal&#39;
+   (0054,0222)  View Modifier Code Sequence  0 item(s) ---- 
+   ---------
+(1269,0010) Private Creator                     LO: &#39;Raffaello Biopsy Private Code&#39;
+(1269,1001) Private tag data                    IS: &#39;0&#39;
+(1271,0010) Private Creator                     LO: &#39;Raffaello Mammography Private Code&#39;
+(1271,1020) Private tag data                    IS: &#39;3&#39;
+(1271,1021) Private tag data                    IS: &#39;2&#39;
+(1271,1022) Private tag data                    IS: &#39;0&#39;
+(1271,1025) Private tag data                    IS: &#39;0&#39;
+(1271,1038) Private tag data                    LO: &#39;YES&#39;
+(1271,1039) Private tag data                    US: [268, 268]
+(1271,1040) Private tag data                    US: [536, 536]
+(1271,1041) Private tag data                    LO: [&#39;CURRENT&#39;, &#39;STANDARD&#39;]
+(1271,1053) Private tag data                    LO: &#39;1.00&#39;
+(1271,1054) Private tag data                    IS: &#39;0&#39;
+(1271,1055) Private tag data                    LO: &#39;1952&#39;
+(1271,1070) Private tag data                    DS: &#39;648.8&#39;
+(1271,1071) Private tag data                    DS: &#39;0.000&#39;
+(1271,1072) Private tag data                    DS: &#39;0.000&#39;
+(1271,1073) Private tag data                    DS: &#39;0.000&#39;
+(1271,1074) Private tag data                    IS: &#39;1792&#39;
+(1271,1075) Private tag data                    IS: &#39;0&#39;
+(1271,1076) Private tag data                    DS: &#39;0.964&#39;
+(1271,1077) Private tag data                    DS: &#39;0.964&#39;
+(1271,1078) Private tag data                    DS: &#39;0.964&#39;
+(1271,1079) Private tag data                    IS: &#39;10&#39;
+(1271,1080) Private tag data                    IS: &#39;21&#39;
+(1271,1082) Private tag data                    IS: &#39;1&#39;
+(1271,1083) Private tag data                    LO: &#39;&#39;
+(1271,1084) Private tag data                    LO: &#39;&#39;
+(1271,1086) Private tag data                    LT: Array of 73 elements
+(1271,1087) Private tag data                    IS: &#39;6&#39;
+(1271,1088) Private tag data                    IS: &#39;0&#39;
+(1271,1091) Private tag data                    LO: &#39;1.4&#39;
+(1271,1093) Private tag data                    IS: &#39;0&#39;
+(1271,1097) Private tag data                    IS: &#39;7500&#39;
+(1271,1098) Private tag data                    IS: &#39;2&#39;
+(1271,1099) Private tag data                    IS: &#39;2&#39;
+(1271,109A) Private tag data                    IS: &#39;2&#39;
+(1271,109B) Private tag data                    IS: &#39;2&#39;
+(1271,10A1) Private tag data                    US: 0
+(1271,10A4) Private tag data                    LO: &#39;&#39;
+(1271,10A5) Private tag data                    SS: 0
+(1271,10B2) Private tag data                    DS: &#39;-0.90789&#39;
+(2050,0020) Presentation LUT Shape              CS: &#39;INVERSE&#39;
+(7FE0,0010) Pixel Data                          OW: Array of 20133920 elements
+</pre></div>
+</div>
+<img alt="../_images/2adee16880332a05617c3dea75c11c75663a6cf5b12625a2d54e0f0397a87be2.png" src="../_images/2adee16880332a05617c3dea75c11c75663a6cf5b12625a2d54e0f0397a87be2.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">pixel_array</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">ds1</span> <span class="o">=</span> <span class="n">pydicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="s2">&quot;reco.dcm&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># Show the main metadata</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="nb">print</span><span class="p">(</span><span class="n">ds1</span><span class="p">)</span>
+
+<span class="nn">File /opt/anaconda3/envs/libro/lib/python3.13/site-packages/pydicom/filereader.py:1042,</span> in <span class="ni">dcmread</span><span class="nt">(fp, defer_size, stop_before_pixels, force, specific_tags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1040</span>     <span class="n">caller_owns_file</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span>     <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reading file &#39;</span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1042</span>     <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1043</span> <span class="k">elif</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1044</span>     <span class="n">fp</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1045</span>     <span class="ow">or</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1046</span>     <span class="ow">or</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;seek&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span>     <span class="ow">or</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;tell&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span> <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span>         <span class="s2">&quot;dcmread: Expected a file path, file-like or readable buffer, &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span>         <span class="sa">f</span><span class="s2">&quot;but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;reco.dcm&#39;
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elena Loli Piccolomini
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

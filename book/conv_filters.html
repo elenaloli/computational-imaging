@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Image filtering &#8212; Computational Imaging 2025-26 Module I</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/conv_filters';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/compim.png" class="logo__image only-light" alt="Computational Imaging 2025-26 Module I - Home"/>
+    <script>document.write(`<img src="../_static/compim.png" class="logo__image only-dark" alt="Computational Imaging 2025-26 Module I - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/conv_filters.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/conv_filters.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Image filtering</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-shift-invariant-systems-lsis">Linear Shift Invariant Systems (LSIS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution">Convolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-convolution-and-linear-image-filters">2D Convolution and linear image filters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-filters">Non linear filters</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="image-filtering">
+<h1>Image filtering<a class="headerlink" href="#image-filtering" title="Link to this heading">#</a></h1>
+<p>Definition. A <strong>filter</strong> is an operation or system that selectively modifies a signal by enhancing, attenuating, or removing certain components, while leaving others relatively unchanged.
+Those components can be defined in terms of:</p>
+<ul class="simple">
+<li><p>frequency (most common)</p></li>
+<li><p>space (image filtering)</p></li>
+<li><p>time (temporal filtering)</p></li>
+</ul>
+<p>Mathematically: A filter is a function or operator <span class="math notranslate nohighlight">\(H\)</span>  that transforms an input signal <span class="math notranslate nohighlight">\(x\)</span> into an output signal <span class="math notranslate nohighlight">\(y\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[y = H(x)\]</div>
+<p>Think of a filter as a gate:</p>
+<ul class="simple">
+<li><p>lets some information pass</p></li>
+<li><p>blocks or weakens the rest</p></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>sunglasses → filter light intensity</p></li>
+<li><p>audio equalizer → filters sound frequencies</p></li>
+</ul>
+<p>Common types of filters in the frequency domain:</p>
+<ul class="simple">
+<li><p>Low-pass filter: passes low frequencies and suppresses high frequencies
+Effect: smoothing / blurring</p></li>
+<li><p>High-pass filter: passes high frequencies and suppresses low frequencies
+Effect: edge enhancement / detail</p></li>
+<li><p>Band-pass filter: passes only a range of frequencies</p></li>
+</ul>
+<p><strong>Filters in images</strong></p>
+<ul class="simple">
+<li><p>Low frequencies → global structure, smooth regions</p></li>
+<li><p>High frequencies → edges, textures, noise
+That’s why:</p></li>
+<li><p>blurring = low-pass filtering</p></li>
+<li><p>edge detection = high-pass filtering</p></li>
+</ul>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=f-IINpceX6k">https://www.youtube.com/watch?v=f-IINpceX6k</a></p>
+<section id="linear-shift-invariant-systems-lsis">
+<h2>Linear Shift Invariant Systems (LSIS)<a class="headerlink" href="#linear-shift-invariant-systems-lsis" title="Link to this heading">#</a></h2>
+<p>Linear Shift Invariant Systems (LSIS) are very important in image processing.</p>
+<p align="center">
+  <img src="immagini_sorgente\LSIS1.png"  width="400">
+</p>
+<p>We consider first one dimensional signals.The extension to two dimensional signals, i.e. images, will be simple.</p>
+<p>It leads to lots of usefule image processing algorithms, beacuse many tsks in image procrssing can be described by LSIS.</p>
+<p><strong>What is a LSIS?</strong></p>
+<p>Property 1. Linearity:</p>
+<p align="center">
+  <img src="immagini_sorgente\LSIS2.png"  width="400">
+</p>
+<p>Property 2. Shift invariance:</p>
+<p align="center">
+  <img src="immagini_sorgente\LSIS3.png"  width="400">
+</p><p><strong>Why are LSIS important?</strong></p>
+<p align="center">
+  <img src="immagini_sorgente\LSIS4.png"  width="400">
+</p>
+<p>If the object moves far from the lens, the new image is obtained bya pplying a LSIS to the previous one.</p>
+<p>The <em>defocused</em> image <span class="math notranslate nohighlight">\(g\)</span> is the processed version of the image <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<ul class="simple">
+<li><p><em>linearity</em>: brightness variation</p></li>
+<li><p><em>shift invariance</em> scene movement in <span class="math notranslate nohighlight">\(f\)</span> has the same movements  in <span class="math notranslate nohighlight">\(g\)</span>.</p></li>
+</ul>
+</section>
+<section id="convolution">
+<h2>Convolution<a class="headerlink" href="#convolution" title="Link to this heading">#</a></h2>
+<p>Convolutions of two  1D functions <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(h(x)\)</span>:</p>
+<p align="center">
+  <img src="immagini_sorgente\conv1.png"  width="400">
+</p>
+<p>We follow the steps.</p>
+<div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/conv2.png" width="600">
+    <p align="center"> 
+    Step 1: Draw f and h
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/conv3.png" width="400">
+    <p align="center">
+    Step 3
+    </p>
+  </div>
+</div><div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/conv5.png" width="400">
+    <p align="center">
+    Step 5: multiply f and h and compute the integral.
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/conv6.png" width="400">
+    <p align="center">
+    Step 6: repeat Step 5 for all the x in the domain.
+    </p>
+  </div>
+</div><p>Any LSIS implies convolution and whenever you perform a convolution you have a LSIS.</p>
+<p>Examples:</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<p align="center">
+  <img src="immagini_sorgente\conv7.png"  width="400">
+</p>
+<ol class="arabic simple" start="2">
+<li></li>
+</ol>
+<p align="center">
+  <img src="immagini_sorgente\conv8.png"  width="400">
+</p><p>When you perform a convolution, the result is a function that satisfy linearity and shift inversion.</p>
+<p><strong>Linearity</strong>
+$<span class="math notranslate nohighlight">\(g_1(x)=\int f_1(\tau)h(x-\tau)d\tau, \ \ g_2(x)=\int f_2(\tau)h(x-\tau)d\tau \)</span>$</p>
+<p>then:
+$<span class="math notranslate nohighlight">\(\int (\alpha f_1(\tau) + \beta f_2(\tau)) h(x-\tau)d\tau=\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(= \alpha \int f_1(\tau) h(x-\tau)d\tau+ \beta \int f_2(\tau) h(x-\tau)d\tau\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(=\alpha g_1(x)+\beta g_2(x)\)</span>$</p>
+<p><strong>Shift invariance</strong>
+$<span class="math notranslate nohighlight">\(g(x)=\int f(\tau)h(x-\tau)d\tau\)</span><span class="math notranslate nohighlight">\(
+Then:
+\)</span><span class="math notranslate nohighlight">\(\int f(\tau -a) h(x-\tau)d\tau=\int f(\mu)h(x-a-\mu)d\mu=g(x-a)\)</span>$</p>
+<p>The unit of the convolution operator is the <em>unit impulse function</em></p>
+<p align="center">
+  <img src="immagini_sorgente\conv9.png"  width="400">
+</p>
+<p>If you convolve it with any function <span class="math notranslate nohighlight">\(f\)</span>, the result is <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p><strong>Properties of Convolution</strong></p>
+<ol class="arabic simple">
+<li><p><em>Commutative</em>: a<em>b=b</em>a</p></li>
+<li><p><em>Associative</em>: a*(b<em>c)=(a</em>b)*c</p></li>
+</ol>
+<section id="d-convolution-and-linear-image-filters">
+<h3>2D Convolution and linear image filters<a class="headerlink" href="#d-convolution-and-linear-image-filters" title="Link to this heading">#</a></h3>
+<p>In case of 2D functions the convolution is extended as:
+$<span class="math notranslate nohighlight">\(g(x,y)=\int \int f(\tau,\mu)h(x-\tau,y-\mu) d\tau d\mu\)</span>$</p>
+<p>In the discrete case, for images, we have:</p>
+<p align="center">
+  <img src="immagini_sorgente\filt2.png"  width="400">
+</p>
+<p><span class="math notranslate nohighlight">\(h\)</span> is usually called as <em>convolution mask</em> or <em>convolution kernel</em> or <em>convolution filter</em>.</p>
+<p>If we want to understand what happen when the kernel is applied to a single pixel, first of all it is flipped twice,
+then it is applied to the pixel:</p>
+<div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt3.png" width="400">
+    <p align="center">
+    Step 5: multiply f and h and compute the integral.
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt4.png" width="400">
+    <p align="center">
+    Step 6: repeat Step 5 for all the x in the domain.
+    </p>
+  </div>
+</div>
+<p>Then you sum all the values and this is the result stored in the output pixel:</p>
+<p align="center">
+  <img src="immagini_sorgente\filt5.png"  width="400">
+</p>
+<p>What about the borders? To apply the convolution to a pixel on the border is necessary to <em>extend</em> somehow the image.</p>
+<p align="center">
+  <img src="immagini_sorgente\filt6.png"  width="400">
+</p>
+<p><strong>Examples</strong></p>
+<ol class="arabic simple">
+<li><p>If we convolve with the impulse function, we obtain the sama image of the input:</p></li>
+</ol>
+<p align="center">
+  <img src="immagini_sorgente\filt7.png"  width="400">
+</p>
+<ol class="arabic simple" start="2">
+<li><p>If we consider the <em>box kernel</em>, as a square of constant value equal to one:</p></li>
+</ol>
+<p align="center">
+  <img src="immagini_sorgente\filt8.png"  width="400">
+</p>
+<p>The output image is saturated.
+If we normalize the values inside the box by diving by the area of the box we obtain:</p>
+<p align="center">
+  <img src="immagini_sorgente\filt9.png"  width="400">
+</p><p>How to improve the results of the box filter where blocky artifacts are visible? With  a <em>fuzzy filter</em>:</p>
+<div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt10.png" width="400">
+    <p align="center">
+    Box filter 21x21
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt11.png" width="400">
+    <p align="center">
+    fuzzy filter 21x21
+    </p>
+  </div>
+</div>
+<p>The maximum value is in the center and the the values symmetrivally decrease far from the centre. In this case the image is smoothed but there aren’t any more blocky artifacts.</p>
+<p>The fuzzy filter can be expressd mathematically by means of the gaussian function.</p>
+<p align="center">
+  <img src="immagini_sorgente\filt1.png"  width="400">
+</p>
+<p>Note that the gaussian function goes to zero only at infinity.
+Which is the best size of gaussian mask to use? Ususally, <span class="math notranslate nohighlight">\(k \simeq 2 \pi \sigma\)</span>.
+An example:</p>
+<div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt12.png" width="400">
+    <p align="center">
+    Box filter 21x21
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt13.png" width="400">
+    <p align="center">
+    fuzzy filter 21x21
+    </p>
+  </div>
+</div>
+<p>The Guassian filter has the property to be <em>separable</em>:</p>
+<p align="center">
+  <img src="immagini_sorgente\filt14.png"  width="400">
+</p>
+<p>This is important for the computational cost. We can examine the cost for a single pixel. The total cost is obtained by summing the cost for all the pjxels in the image.</p>
+<p align="center">
+  <img src="immagini_sorgente\filt15.png"  width="400">
+</p></section>
+</section>
+<section id="non-linear-filters">
+<h2>Non linear filters<a class="headerlink" href="#non-linear-filters" title="Link to this heading">#</a></h2>
+<p>Non linear filters <strong>cannot be implemented with convolutions</strong>.</p>
+<p>Why use non linear filters:
+An example. We want to remove salt-and-peppers noise froma an image.</p>
+<p align="center">
+  <img src="immagini_sorgente\filt16.png"  width="400">
+</p>
+With a gaussian filter the noise is not exactly removed, but smeared out, but we are also loosing some details on the coins.<p><strong>Median filter</strong></p>
+<p>The median filter is obtained by means of this algorithm, for each pixel.
+1- Create a square mask around the pixel.
+2- sort the values of the pixels n teh mask.
+3- Consider the median of that values.
+4- subsitute the medianl value to the considered pixel. This is the new value of the pixel in the filtered image.</p>
+<p align="center">
+  <img src="immagini_sorgente\filt17.png"  width="500">
+</p>
+<p>but if you use a larger mask, the noise is better removed but the image is quite blurred:</p>
+<p align="center">
+  <img src="immagini_sorgente\filt18.png"  width="500">
+</p>
+<p><strong>Bilateral filter</strong></p>
+<p>Suppose now to go back to the gaussian filter, but not use the same filter for any pixel. In practice, we want to create a single filter for each pixel, that takes care of the context where the pixel is and  of its neighbour pixels.
+We can, for example, eliminate the pxels that have a too different brightness value from the agussian mask:</p>
+<p align="center">
+  <img src="immagini_sorgente\filt19.png"  width="400">
+</p>
+<p>How to create a filter like this? If you apply the gaussina filter to an image like a step and youi cneter the filter in the yellow pixels, the red and green pixels have the same smoothing, vene if they are at oppsite sides of the step. the final result is the smoothe image (surface) on the left, that obviously is not satisfactory.</p>
+<div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt20.png" width="400">
+    <p align="center">
+    Box filter 21x21
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/filt21.png" width="400">
+    <p align="center">
+    fuzzy filter 21x21
+    </p>
+  </div>
+</div>
+<p>To face this problem, we add a new term to the filter, that is called <em>brightness gaussian</em> that cares abut the brigtness of the pixels in the mask an by means of the  coefficent large weights are assigned when the difference of brightness is small and samll weights are assigned when the difference of brightness is large.</p>
+<p align="center">
+  <img src="immagini_sorgente\filt22.png"  width="500">
+</p>
+so that the final filters looks like this:
+<p align="center">
+  <img src="immagini_sorgente\filt23.png"  width="500">
+</p>
+The explicit form of the bilateral filter is the follwing:
+<p align="center">
+  <img src="immagini_sorgente\filt24.png"  width="500">
+</p><p>Examples:</p>
+<p align="center">
+  <img src="immagini_sorgente\filt25.png"  width="500">
+</p>
+Increasing $\sigma$:
+<p align="center">
+  <img src="immagini_sorgente\filt26.png"  width="500">
+</p></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-shift-invariant-systems-lsis">Linear Shift Invariant Systems (LSIS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolution">Convolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-convolution-and-linear-image-filters">2D Convolution and linear image filters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-filters">Non linear filters</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elena Loli Piccolomini
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

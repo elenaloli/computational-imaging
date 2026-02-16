@@ -1,0 +1,756 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Computational imaging and inverse problems &#8212; Computational Imaging 2025-26 Module I</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/compimag';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/compim.png" class="logo__image only-light" alt="Computational Imaging 2025-26 Module I - Home"/>
+    <script>document.write(`<img src="../_static/compim.png" class="logo__image only-dark" alt="Computational Imaging 2025-26 Module I - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/compimag.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/compimag.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Computational imaging and inverse problems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational imaging and inverse problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-computational-imaging">What is Computational Imaging?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-imaging-as-an-inverse-problem">Computational imaging as an inverse problem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-inverse-imaging-problems">Linear inverse imaging problems</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-problems-are-ill-posed">Inverse problems are ill-posed</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="computational-imaging-and-inverse-problems">
+<h1>Computational imaging and inverse problems<a class="headerlink" href="#computational-imaging-and-inverse-problems" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<p>In 1971 the first X-ray Computed tomography machine is installed in the Atkinsons Morley
+Hospital, Wimbledon, Great Britain.
+The CT generated images were obtained by a specially designed algorithm, since  no viable method existed.</p>
+<div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/compim1.jpg" width="300">
+    <p align="center">
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/compim2.jpg" width="200">
+    <p align="center">
+    </p>
+  </div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>April 10, 2019. The first image of a black hole by means of the Event Horizon telescope.
+The image was constructed from enormous quantities of data collected alla around the world with an algorithmic computation.</p></li>
+</ol>
+<div style="display:flex; gap:20px;">
+  <div style="width:45%;">
+    <img src="immagini_sorgente/compim3.jpg" width="350">
+    <p align="center">
+    </p>
+  </div>
+  <div style="width:45%;">
+    <img src="immagini_sorgente/compim4.jpg" width="400">
+    <p align="center">
+    </p>
+  </div>
+</div>
+<section id="what-is-computational-imaging">
+<h2>What is Computational Imaging?<a class="headerlink" href="#what-is-computational-imaging" title="Link to this heading">#</a></h2>
+<p><strong>chatgpt</strong>
+<em>Computational imaging is an approach to imaging where image formation is shared between hardware and algorithms rather than being done purely by optics.</em></p>
+<p><strong>gemini</strong>
+<em>In simple terms, computational imaging (CI) is a shift from traditional “what you see is what you get” photography to a process where the final image is “computed” rather than just captured</em></p>
+<p><strong>wikipedia</strong>
+<em>Computational imaging is the process of indirectly forming images from measurements using algorithms that rely on a significant amount of computing. In contrast to traditional imaging, computational imaging systems involve a tight integration of the sensing system and the computation in order to form the images of interest.</em></p>
+<p><strong>AI  overview</strong>
+<em>Computational imaging merges advanced hardware (sensors, optics) with sophisticated algorithms to overcome traditional optical limits, creating superior images from encoded, often non-traditional, data.</em></p>
+<p><strong>My definition</strong>
+<em>Computational imaging refers to imaging systems where the measured data are not images themselves, but indirect, encoded, or incomplete measurements that are transformed into images through computational algorithms.</em></p>
+<p align="center">
+  <img src="immagini_sorgente\filt22.png"  width="500">
+</p>
+</section>
+</section>
+<section id="computational-imaging-as-an-inverse-problem">
+<h1>Computational imaging as an inverse problem<a class="headerlink" href="#computational-imaging-as-an-inverse-problem" title="Link to this heading">#</a></h1>
+<p>Computational imaging is the formulation of image formation as an inverse problem,
+where an unknown image or object x is estimated from measured data y by inverting a
+Forward (or direct)  model:
+$<span class="math notranslate nohighlight">\(y=\mathcal{F}x+e\)</span><span class="math notranslate nohighlight">\(
+The imaging physics is modelled by the operator \)</span>\mathcal{F}$.</p>
+<p><strong>What is an inverse problem?</strong></p>
+<p><em>Keller: We call two problems inverse one another if the formulation of the each involves part or all the formulation of the other.</em></p>
+<ul class="simple">
+<li><p>The problem that is more extensively studied is usually called forward (or direct) , the other is called inverse.</p></li>
+<li><p>The direct problem is usually oriented along a cause-effect, in the sense that it computes the effect given the cause.</p></li>
+<li><p>The inverse problem is associated with the reversal of the cause-effect and consists in finding the causes given the effects.</p></li>
+<li><p>In instrumental physics, the direct problem is the measure of the object, obtained by the instrument, whereas the inverse problem consists in determining the object given the measure.</p></li>
+<li><p>In direct problems usually there is a loss of information from the input to the output. Hence, in the solution of the inverse problem it is impossible to recover the object exactly, due to the information lost in the direct one.</p></li>
+</ul>
+<p align="center">
+  <img src="immagini_sorgente\compim6.png"  width="600">
+</p>
+<section id="linear-inverse-imaging-problems">
+<h2>Linear inverse imaging problems<a class="headerlink" href="#linear-inverse-imaging-problems" title="Link to this heading">#</a></h2>
+<p>Linear inverse imaging problems are characterized by a linear model describing the relationship between the measured data y and the unknown object x.</p>
+<p>The direct linear model can be expressed as:
+$<span class="math notranslate nohighlight">\(Ax=y\)</span>$<br />
+where A is a matrix representing the linear operator acting on the image x to generate the data y.</p>
+<p align="center">
+<img src="immagini_sorgente\compim5.png"  width="700">
+  <p align="center"> 
+</p>
+<p>Since the unknown object represented as an image, in the previous model we suppose
+to reshape the image into an array x following a lexicographical order, and the data into an array y.</p>
+<p>Data are usually affected by <em>noise</em>, due to different physical processes.
+For the moment, we can consider additive noise so that the final forward model is:
+$<span class="math notranslate nohighlight">\(Ax=y+e\)</span>$
+The noise is a random process described by a random variable.</p>
+<p align="center">
+  <img src="immagini_sorgente\compim10.png"  width="800">
+</p>
+<p align="center">
+  <img src="immagini_sorgente\compim20
+  .png"  width="500">
+</p>
+<p><strong>Examples of imaging systems</strong></p>
+<p>In general these different imaging systems  are modelled by a different matrix <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p><em>Optical imaging systems</em></p>
+<p align="center">
+  <img src="immagini_sorgente\compim7.png"  width="800">
+</p>
+<p><em>Medical imaging systems</em></p>
+<p align="center">
+  <img src="immagini_sorgente\compim8.png"  width="800">
+</p>
+<p><em>Other imaging systems</em></p>
+<p align="center">
+  <img src="immagini_sorgente\compim9.png"  width="800">
+</p>
+<p><strong>Examples of linear computational imaging applications</strong>
+(modelled by linear inverse problems)</p>
+<p><strong>Image deblur</strong></p>
+<p align="center">
+  <img src="immagini_sorgente\compim11.png"  width="800">
+</p>
+<p><strong>Image superesolution: microscopy</strong></p>
+<p align="center">
+  <img src="immagini_sorgente\compim12.png"  width="800">
+</p>
+<p><strong>Image superesolution: photography</strong></p>
+<p align="center">
+  <img src="immagini_sorgente\compim13.png"  width="800">
+</p>
+<p><strong>Image inpainting</strong></p>
+<p align="center">
+  <img src="immagini_sorgente\compim14.png"  width="800">
+</p>
+<p><strong>Medical image reconstruction: computed tomography</strong></p>
+<p align="center">
+  <img src="immagini_sorgente\compim15.png"  width="800">
+</p></section>
+</section>
+<section id="inverse-problems-are-ill-posed">
+<h1>Inverse problems are ill-posed<a class="headerlink" href="#inverse-problems-are-ill-posed" title="Link to this heading">#</a></h1>
+<p>What is a <strong>well posed</strong> problem?</p>
+<p>A problem is defined <strong>well-posed</strong> if:</p>
+<ol class="arabic simple">
+<li><p>it exists a solution for arbitrary data</p></li>
+<li><p>this solution is unique.</p></li>
+<li><p>the solution continuously depends on the data.
+This means that it small varies for small variations of the data.</p></li>
+</ol>
+<p><em>The direct problem is in general well posed (this comes from physical considerations)</em></p>
+<p>What is an <strong>ill posed</strong> problem?</p>
+<p>A problem where <em>at least one of the three conditions is not satisfied</em>.</p>
+<p><em>Linear inverse imaging problems are ill-posed.</em></p>
+<p align="center">
+  <img src="immagini_sorgente\compim16.png"  width="600">
+</p>
+<ul class="simple">
+<li><p>A is a linear operator mapping an image in the
+Image space X to a noise free image in the image space Y
+(orange subset).</p></li>
+<li><p>The set of noise free images is usually called <em>range of A</em>.</p></li>
+<li><p>It is possible that two or more objects have exactly
+the same image. It is related with objects whose
+Image is exactly zero (invisible objects). Given an object in X
+If we add an invisible object to it we obtain the same image.</p></li>
+<li><p>It is possible that two distant objects have very similar
+images.</p></li>
+</ul>
+<p>Solving the linear system
+$<span class="math notranslate nohighlight">\(Ax=y+e\)</span>$</p>
+<p>Is a quite simple numerical task, but in the case of linear inverse ill-posed problems <span class="math notranslate nohighlight">\(A\)</span> is ill-conditioned and the solution of the linear system becomes difficult for at least one of the following three reasons.</p>
+<p>Suppose A of size M x N (now we call <span class="math notranslate nohighlight">\(A\)</span> instead of <span class="math notranslate nohighlight">\(K\)</span>  the matrix describing the imaging system).</p>
+<ol class="arabic simple">
+<li><p>If M=N and A non singular, the system has a unique solution,
+but usually  there is <strong>no continuos dependence from the data</strong>. This means that a small change in the data produces a great variation in the solution.</p></li>
+<li><p>If M&gt;N the linear system has <strong>no solutions</strong> and in place of it we solve
+the least-squares problem:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[min ||Ax-(y+e)||_2^2\]</div>
+<ol class="arabic simple" start="3">
+<li><p>If M&lt;N the system has <strong>infinite possible solutions</strong>.
+Again we substitute the linear system with a least-squares problem.</p></li>
+</ol>
+<p><em>The result is that the numerical inversion produces results that are physically unacceptable even mathematically acceptable</em></p>
+<p>In inverse problems data are always affected by noise and the solution method amplifies that noise, producing a large and wildly oscillating function that completely hides the physical solution corresponding to noise-free data.</p>
+<p>Even if the solution of the linear system exists and is unique (case 1.) it is completely corrupted due to the small noise on the data (ill-conditioned system).</p>
+<p align="center">
+  <img src="immagini_sorgente\compim17.png"  width="700">
+</p>
+<p>The simple inversion is called the <strong>naive solution</strong>. As visible from the previous image it is not a good and reliable solution. The noise present on the data is amplified in the solution.</p>
+<p><em>Why the naive approach fails?</em></p>
+<div class="math notranslate nohighlight">
+\[x_{naive}=A^{-1}y+A^{-1}e=x+A^{-1}e\]</div>
+<p>Hence the naive image consists of the sum of two images:</p>
+<ul class="simple">
+<li><p>The first component x is the exact image</p></li>
+<li><p>The second component            is the inverted noise.</p></li>
+<li><p>The inverted noise contaminates the exct image x.</p></li>
+</ul>
+<p>We use the Singular Value Decomposition (SVD) of A to analyse the
+contribution of the inverted noise.</p>
+<p><em>Theorem (SVD decomposition)</em></p>
+<p>Any matrix <span class="math notranslate nohighlight">\(A\)</span> of size <span class="math notranslate nohighlight">\(m \times \)</span> and rank k &lt; min(m,n) can be decomposed as:</p>
+<div class="math notranslate nohighlight">
+\[A=U \Sigma V^T\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>U is an  orthogonal matrix of size <span class="math notranslate nohighlight">\(m \times m\)</span></p></li>
+<li><p>V is an orthogonal matrix of size <span class="math notranslate nohighlight">\(n \times n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma\)</span> is a diagonal matrix with diagonal entries:
+$<span class="math notranslate nohighlight">\( \sigma_1 \geq \sigma_2 \geq \ldots \sigma_k \geq \sigma_{k+1}= \ldots =\sigma_{min(m,n)}=0\)</span>$</p></li>
+</ul>
+<p>If we write in terms of SVD  representation:</p>
+<div class="math notranslate nohighlight">
+\[A^{-1}=V \Sigma^{-1} U^T= \sum_{i=1}^k \frac{1}{\sigma_i}v_iu_i^T\]</div>
+<p>The naive solution can be written as:</p>
+<div class="math notranslate nohighlight">
+\[x_{naive}=A^{-1}(y+e)=x+A^{-1}e=x+\sum_{i=1}^k \frac{1}{\sigma_i}v_iu_i^Te\]</div>
+<ul class="simple">
+<li><p>The error components <span class="math notranslate nohighlight">\(u_i^Te\)</span> are small and typically of the same order of magnite for all i.</p></li>
+<li><p>The singular vectors corresponding to the smaller singular values typically
+tend to have more sign changes.</p></li>
+<li><p>The singular vectors corresponding to the smaller singular values typically represent
+higher frequency information. That is, as <span class="math notranslate nohighlight">\(i\)</span> increases, the vectors   <span class="math notranslate nohighlight">\(u_i\)</span>        and <span class="math notranslate nohighlight">\(v_i\)</span>  tend to have more sign changes.</p></li>
+</ul>
+<p align="center">
+  <img src="immagini_sorgente\compim18.png"  width="700">
+</p>
+<p>When we divide by a small singular value such as <span class="math notranslate nohighlight">\(\sigma_N\)</span> we greatly magnify the
+corresponding error component <span class="math notranslate nohighlight">\(u_N^Te\)</span> , which in turn contributes a large multiple
+of the high frequency information contained in  <span class="math notranslate nohighlight">\(v_N\)</span>     to the computed solution.</p>
+<p>We can examine the coefficents of the naive solution:</p>
+<div class="math notranslate nohighlight">
+\[x_{naive}=A^{-1}y=V \Sigma^{-1} U^Ty= \sum_{i=1}^k \frac{u_i^Ty}{\sigma_i}v_i\]</div>
+<p>The quantities  <span class="math notranslate nohighlight">\(\frac{u_i^T y}{\sigma_i}\)</span>   are expansion coefficients of the basis vectors <span class="math notranslate nohighlight">\(v_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[downarrow\]</div>
+<p>When these quantities are small in magnitude, the solution has very
+little contribution from <span class="math notranslate nohighlight">\(v_i\)</span> , but when  <span class="math notranslate nohighlight">\(\sigma_i\)</span>  is very small, these quantities can be large due to the presence of the noise in the data term <span class="math notranslate nohighlight">\(y+e\)</span>.</p>
+<p align="center">
+  <img src="immagini_sorgente\compim19.png"  width="700">
+</p>
+<div class="math notranslate nohighlight">
+\[ min \|Ax-(y+e)\|_2^2 + \lambda R(x)\]</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computational imaging and inverse problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-computational-imaging">What is Computational Imaging?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-imaging-as-an-inverse-problem">Computational imaging as an inverse problem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-inverse-imaging-problems">Linear inverse imaging problems</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-problems-are-ill-posed">Inverse problems are ill-posed</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elena Loli Piccolomini
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
