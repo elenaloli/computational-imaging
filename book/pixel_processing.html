@@ -62,7 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/pixel_processing';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+    <link rel="next" title="Image filtering" href="conv_filters.html" />
+    <link rel="prev" title="Image processing, Computer Vision and Computer Graphics" href="intro_ci_improc.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,9 +182,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Image processing Tools</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="conv_filters.html">Image filtering</a></li>
 </ul>
 
     </div>
@@ -379,11 +384,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Image processing Tools</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-an-image">Histogram of an image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#image-noise">Image noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-an-image">Histogram of an image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-noise">Image noise</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -467,9 +470,8 @@ Massimo assoluto: 229
 <img alt="../_images/9ccc18b90805d7fb178153665ba58bffa16ab5379fe0fc05ce95329935afc929.png" src="../_images/9ccc18b90805d7fb178153665ba58bffa16ab5379fe0fc05ce95329935afc929.png" />
 </div>
 </div>
-</section>
 <section id="histogram-of-an-image">
-<h1>Histogram of an image<a class="headerlink" href="#histogram-of-an-image" title="Link to this heading">#</a></h1>
+<h2>Histogram of an image<a class="headerlink" href="#histogram-of-an-image" title="Link to this heading">#</a></h2>
 <p>An image histogram is a graph that shows how the pixel intensities are distributed in an image. It tells you how many pixels have each brightness value.</p>
 <p>For a standard 8-bit grayscale image:
 Pixel values range from 0 to 255</p>
@@ -572,7 +574,7 @@ we transform the image so its histogram becomes more uniformly distributed, whic
 </div>
 </section>
 <section id="image-noise">
-<h1>Image noise<a class="headerlink" href="#image-noise" title="Link to this heading">#</a></h1>
+<h2>Image noise<a class="headerlink" href="#image-noise" title="Link to this heading">#</a></h2>
 <p>Digital images always are affected by errors (noise). Noise in images is any unwanted random variation in pixel values that does not correspond to the true scene.
 Noise reduces contrast, hides details, and can mislead segmentation or measurements.
 It can come from different sources such as:</p>
@@ -708,13 +710,14 @@ Origin: Electronic sensor noise, Thermal noise, Amplifier circuits.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f03b163d24f309f862cee4bcbbdd37957037c083818302b3396c58487153bc00.png" src="../_images/f03b163d24f309f862cee4bcbbdd37957037c083818302b3396c58487153bc00.png" />
+<img alt="../_images/7b56b10ea0b6bd7b3e668cbc720650d083e4b4bfaba1faa191bb03d7c1625757.png" src="../_images/7b56b10ea0b6bd7b3e668cbc720650d083e4b4bfaba1faa191bb03d7c1625757.png" />
 </div>
 </div>
 <p>Summarizing:</p>
 <p align="center">
   <img src="immagini_sorgente\pixproc7.png"  width="700">
 </p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -748,13 +751,22 @@ Origin: Electronic sensor noise, Thermal noise, Amplifier circuits.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../intro.html"
+       href="intro_ci_improc.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Image processing, Computer Vision and Computer Graphics</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="conv_filters.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Image filtering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -772,11 +784,9 @@ Origin: Electronic sensor noise, Thermal noise, Amplifier circuits.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Image processing Tools</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-an-image">Histogram of an image</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#image-noise">Image noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-of-an-image">Histogram of an image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-noise">Image noise</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

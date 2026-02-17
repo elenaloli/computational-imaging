@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/conv_filters';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,12 +180,8 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
-
-
-
-
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Image filtering</a></li>
 </ul>
 
     </div>
@@ -437,28 +432,43 @@ That’s why:</p></li>
 <li><p>blurring = low-pass filtering</p></li>
 <li><p>edge detection = high-pass filtering</p></li>
 </ul>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=f-IINpceX6k">https://www.youtube.com/watch?v=f-IINpceX6k</a></p>
 <section id="linear-shift-invariant-systems-lsis">
 <h2>Linear Shift Invariant Systems (LSIS)<a class="headerlink" href="#linear-shift-invariant-systems-lsis" title="Link to this heading">#</a></h2>
 <p>Linear Shift Invariant Systems (LSIS) are very important in image processing.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/LSIS1.png"><img alt="../_images/LSIS1.png" src="../_images/LSIS1.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\LSIS1.png"  width="400">
-</p>
+</p> -->
 <p>We consider first one dimensional signals.The extension to two dimensional signals, i.e. images, will be simple.</p>
-<p>It leads to lots of usefule image processing algorithms, beacuse many tsks in image procrssing can be described by LSIS.</p>
+<p>It leads to lots of useful image processing algorithms, beacuse many tasks in image processing can be described by LSIS.</p>
 <p><strong>What is a LSIS?</strong></p>
 <p>Property 1. Linearity:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/LSIS2.png"><img alt="../_images/LSIS2.png" src="../_images/LSIS2.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\LSIS2.png"  width="400">
-</p>
+</p> -->
 <p>Property 2. Shift invariance:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/LSIS3.png"><img alt="../_images/LSIS3.png" src="../_images/LSIS3.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\LSIS3.png"  width="400">
-</p><p><strong>Why are LSIS important?</strong></p>
-<p align="center">
+</p> --><p><strong>Why are LSIS important?</strong></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/LSIS4.png"><img alt="../_images/LSIS4.png" src="../_images/LSIS4.png" style="width: 60%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\LSIS4.png"  width="400">
-</p>
-<p>If the object moves far from the lens, the new image is obtained bya pplying a LSIS to the previous one.</p>
+</p> -->
+<p>If the object moves far from the lens, the new image is obtained by applying a LSIS to the previous one.</p>
 <p>The <em>defocused</em> image <span class="math notranslate nohighlight">\(g\)</span> is the processed version of the image <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <ul class="simple">
 <li><p><em>linearity</em>: brightness variation</p></li>
@@ -468,11 +478,29 @@ That’s why:</p></li>
 <section id="convolution">
 <h2>Convolution<a class="headerlink" href="#convolution" title="Link to this heading">#</a></h2>
 <p>Convolutions of two  1D functions <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(h(x)\)</span>:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/conv1.png"><img alt="../_images/conv1.png" src="../_images/conv1.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\conv1.png"  width="400">
-</p>
+</p> -->
 <p>We follow the steps.</p>
-<div style="display:flex; gap:20px;">
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/conv2.png"><img alt="../_images/conv2.png" src="../_images/conv2.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Step 1- Draw f and h</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/conv3.png"><img alt="../_images/conv3.png" src="../_images/conv3.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Step 2 -</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
     <img src="immagini_sorgente/conv2.png" width="600">
     <p align="center"> 
@@ -485,7 +513,21 @@ That’s why:</p></li>
     Step 3
     </p>
   </div>
-</div><div style="display:flex; gap:20px;">
+</div> --><figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/conv5.png"><img alt="../_images/conv5.png" src="../_images/conv5.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Step 3- multiply f and h and compute the integral.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/conv6.png"><img alt="../_images/conv6.png" src="../_images/conv6.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Step 4- repeat Step 3 for all the x in the domain.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
     <img src="immagini_sorgente/conv5.png" width="400">
     <p align="center">
@@ -498,20 +540,29 @@ That’s why:</p></li>
     Step 6: repeat Step 5 for all the x in the domain.
     </p>
   </div>
-</div><p>Any LSIS implies convolution and whenever you perform a convolution you have a LSIS.</p>
+</div> --><p>Any LSIS implies convolution and whenever you perform a convolution you have a LSIS.</p>
 <p>Examples:</p>
 <ol class="arabic simple">
 <li></li>
 </ol>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/conv7.png"><img alt="../_images/conv7.png" src="../_images/conv7.png" style="width: 60%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\conv7.png"  width="400">
-</p>
+</p> -->
 <ol class="arabic simple" start="2">
 <li></li>
 </ol>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/conv8.png"><img alt="../_images/conv8.png" src="../_images/conv8.png" style="width: 60%;" />
+</a>
+</figure>
+<!-- 
 <p align="center">
   <img src="immagini_sorgente\conv8.png"  width="400">
-</p><p>When you perform a convolution, the result is a function that satisfy linearity and shift inversion.</p>
+</p> --><p>When you perform a convolution, the result is a function that satisfy linearity and shift inversion.</p>
 <p><strong>Linearity</strong>
 $<span class="math notranslate nohighlight">\(g_1(x)=\int f_1(\tau)h(x-\tau)d\tau, \ \ g_2(x)=\int f_2(\tau)h(x-\tau)d\tau \)</span>$</p>
 <p>then:
@@ -523,9 +574,13 @@ $<span class="math notranslate nohighlight">\(g(x)=\int f(\tau)h(x-\tau)d\tau\)<
 Then:
 \)</span><span class="math notranslate nohighlight">\(\int f(\tau -a) h(x-\tau)d\tau=\int f(\mu)h(x-a-\mu)d\mu=g(x-a)\)</span>$</p>
 <p>The unit of the convolution operator is the <em>unit impulse function</em></p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/conv9.png"><img alt="../_images/conv9.png" src="../_images/conv9.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\conv9.png"  width="400">
-</p>
+</p> -->
 <p>If you convolve it with any function <span class="math notranslate nohighlight">\(f\)</span>, the result is <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <p><strong>Properties of Convolution</strong></p>
 <ol class="arabic simple">
@@ -537,13 +592,25 @@ Then:
 <p>In case of 2D functions the convolution is extended as:
 $<span class="math notranslate nohighlight">\(g(x,y)=\int \int f(\tau,\mu)h(x-\tau,y-\mu) d\tau d\mu\)</span>$</p>
 <p>In the discrete case, for images, we have:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt2.png"><img alt="../_images/filt2.png" src="../_images/filt2.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt2.png"  width="400">
-</p>
+</p> -->
 <p><span class="math notranslate nohighlight">\(h\)</span> is usually called as <em>convolution mask</em> or <em>convolution kernel</em> or <em>convolution filter</em>.</p>
 <p>If we want to understand what happen when the kernel is applied to a single pixel, first of all it is flipped twice,
 then it is applied to the pixel:</p>
-<div style="display:flex; gap:20px;">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt3.png"><img alt="../_images/filt3.png" src="../_images/filt3.png" style="width: 100%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt4.png"><img alt="../_images/filt4.png" src="../_images/filt4.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
     <img src="immagini_sorgente/filt3.png" width="400">
     <p align="center">
@@ -557,33 +624,68 @@ then it is applied to the pixel:</p>
     </p>
   </div>
 </div>
+ -->
 <p>Then you sum all the values and this is the result stored in the output pixel:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt5.png"><img alt="../_images/filt5.png" src="../_images/filt5.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt5.png"  width="400">
-</p>
+</p> -->
 <p>What about the borders? To apply the convolution to a pixel on the border is necessary to <em>extend</em> somehow the image.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt6.png"><img alt="../_images/filt6.png" src="../_images/filt6.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt6.png"  width="400">
-</p>
+</p> -->
 <p><strong>Examples</strong></p>
 <ol class="arabic simple">
 <li><p>If we convolve with the impulse function, we obtain the sama image of the input:</p></li>
 </ol>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt7.png"><img alt="../_images/filt7.png" src="../_images/filt7.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt7.png"  width="400">
-</p>
+</p> -->
 <ol class="arabic simple" start="2">
 <li><p>If we consider the <em>box kernel</em>, as a square of constant value equal to one:</p></li>
 </ol>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt8.png"><img alt="../_images/filt8.png" src="../_images/filt8.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt8.png"  width="400">
-</p>
+</p> -->
 <p>The output image is saturated.
 If we normalize the values inside the box by diving by the area of the box we obtain:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt9.png"><img alt="../_images/filt9.png" src="../_images/filt9.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt9.png"  width="400">
-</p><p>How to improve the results of the box filter where blocky artifacts are visible? With  a <em>fuzzy filter</em>:</p>
-<div style="display:flex; gap:20px;">
+</p> --><p>How to improve the results of the box filter where blocky artifacts are visible? With  a <em>fuzzy filter</em>:</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/filt10.png"><img alt="../_images/filt10.png" src="../_images/filt10.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Box filter 21x21</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/filt11.png"><img alt="../_images/filt11.png" src="../_images/filt11.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">fuzzy filter 21x21</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
     <img src="immagini_sorgente/filt10.png" width="400">
     <p align="center">
@@ -594,18 +696,30 @@ If we normalize the values inside the box by diving by the area of the box we ob
     <img src="immagini_sorgente/filt11.png" width="400">
     <p align="center">
     fuzzy filter 21x21
-    </p>
-  </div>
-</div>
+    </p> -->
+<!--   </div>
+</div> -->
 <p>The maximum value is in the center and the the values symmetrivally decrease far from the centre. In this case the image is smoothed but there aren’t any more blocky artifacts.</p>
 <p>The fuzzy filter can be expressd mathematically by means of the gaussian function.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt1.png"><img alt="../_images/filt1.png" src="../_images/filt1.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt1.png"  width="400">
-</p>
+</p> -->
 <p>Note that the gaussian function goes to zero only at infinity.
 Which is the best size of gaussian mask to use? Ususally, <span class="math notranslate nohighlight">\(k \simeq 2 \pi \sigma\)</span>.
 An example:</p>
-<div style="display:flex; gap:20px;">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt12.png"><img alt="../_images/filt12.png" src="../_images/filt12.png" style="width: 80%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt13.png"><img alt="../_images/filt13.png" src="../_images/filt13.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
     <img src="immagini_sorgente/filt12.png" width="400">
     <p align="center">
@@ -617,46 +731,79 @@ An example:</p>
     <p align="center">
     fuzzy filter 21x21
     </p>
-  </div>
-</div>
-<p>The Guassian filter has the property to be <em>separable</em>:</p>
-<p align="center">
+  </div> 
+</div> -->
+<p>The Gaussian filter has the property to be <em>separable</em>:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt14.png"><img alt="../_images/filt14.png" src="../_images/filt14.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt14.png"  width="400">
-</p>
-<p>This is important for the computational cost. We can examine the cost for a single pixel. The total cost is obtained by summing the cost for all the pjxels in the image.</p>
-<p align="center">
+</p> -->
+<p>This is important for the computational cost. We can examine the cost for a single pixel. The total cost is obtained by summing the cost for all the pixels in the image.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt15.png"><img alt="../_images/filt15.png" src="../_images/filt15.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt15.png"  width="400">
-</p></section>
+</p> --></section>
 </section>
 <section id="non-linear-filters">
 <h2>Non linear filters<a class="headerlink" href="#non-linear-filters" title="Link to this heading">#</a></h2>
 <p>Non linear filters <strong>cannot be implemented with convolutions</strong>.</p>
 <p>Why use non linear filters:
 An example. We want to remove salt-and-peppers noise froma an image.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt16.png"><img alt="../_images/filt16.png" src="../_images/filt16.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt16.png"  width="400">
-</p>
-With a gaussian filter the noise is not exactly removed, but smeared out, but we are also loosing some details on the coins.<p><strong>Median filter</strong></p>
+</p> -->
+<p>With a gaussian filter the noise is not exactly removed, but smeared out, but we are also loosing some details on the coins.</p>
+<p><strong>Median filter</strong></p>
 <p>The median filter is obtained by means of this algorithm, for each pixel.
 1- Create a square mask around the pixel.
 2- sort the values of the pixels n teh mask.
 3- Consider the median of that values.
 4- subsitute the medianl value to the considered pixel. This is the new value of the pixel in the filtered image.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt17.png"><img alt="../_images/filt17.png" src="../_images/filt17.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt17.png"  width="500">
-</p>
+</p> -->
 <p>but if you use a larger mask, the noise is better removed but the image is quite blurred:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt18.png"><img alt="../_images/filt18.png" src="../_images/filt18.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt18.png"  width="500">
-</p>
+</p> -->
 <p><strong>Bilateral filter</strong></p>
 <p>Suppose now to go back to the gaussian filter, but not use the same filter for any pixel. In practice, we want to create a single filter for each pixel, that takes care of the context where the pixel is and  of its neighbour pixels.
 We can, for example, eliminate the pxels that have a too different brightness value from the agussian mask:</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt19.png"><img alt="../_images/filt19.png" src="../_images/filt19.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt19.png"  width="400">
-</p>
+</p> -->
 <p>How to create a filter like this? If you apply the gaussina filter to an image like a step and youi cneter the filter in the yellow pixels, the red and green pixels have the same smoothing, vene if they are at oppsite sides of the step. the final result is the smoothe image (surface) on the left, that obviously is not satisfactory.</p>
-<div style="display:flex; gap:20px;">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt20.png"><img alt="../_images/filt20.png" src="../_images/filt20.png" style="width: 80%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt21.png"><img alt="../_images/filt21.png" src="../_images/filt21.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
     <img src="immagini_sorgente/filt20.png" width="400">
     <p align="center">
@@ -669,26 +816,46 @@ We can, for example, eliminate the pxels that have a too different brightness va
     fuzzy filter 21x21
     </p>
   </div>
-</div>
+</div> -->
 <p>To face this problem, we add a new term to the filter, that is called <em>brightness gaussian</em> that cares abut the brigtness of the pixels in the mask an by means of the  coefficent large weights are assigned when the difference of brightness is small and samll weights are assigned when the difference of brightness is large.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt22.png"><img alt="../_images/filt22.png" src="../_images/filt22.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt22.png"  width="500">
-</p>
-so that the final filters looks like this:
-<p align="center">
+</p> -->
+<p>so that the final filters looks like this:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt23.png"><img alt="../_images/filt23.png" src="../_images/filt23.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt23.png"  width="500">
-</p>
-The explicit form of the bilateral filter is the follwing:
-<p align="center">
+</p> -->
+<p>The explicit form of the bilateral filter is the follwing:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt24.png"><img alt="../_images/filt24.png" src="../_images/filt24.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt24.png"  width="500">
-</p><p>Examples:</p>
-<p align="center">
+</p> --><p>Examples:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt25.png"><img alt="../_images/filt25.png" src="../_images/filt25.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt25.png"  width="500">
-</p>
-Increasing $\sigma$:
-<p align="center">
+</p> -->
+<p>Increasing <span class="math notranslate nohighlight">\( \sigma \)</span>:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/filt26.png"><img alt="../_images/filt26.png" src="../_images/filt26.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\filt26.png"  width="500">
-</p></section>
+</p> --></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -721,6 +888,15 @@ Increasing $\sigma$:
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
