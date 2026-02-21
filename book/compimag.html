@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/compimag';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="The Discrete Fourier Transform and its use in image procressing" href="fourier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,10 +180,12 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="pixel_processing.html">Image processing Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conv_filters.html">Image filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fourier.html">The Discrete Fourier Transform and its use in image procressing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Computational imaging and inverse problems</a></li>
 
 
 </ul>
@@ -411,34 +412,50 @@ document.write(`
 <p>In 1971 the first X-ray Computed tomography machine is installed in the Atkinsons Morley
 Hospital, Wimbledon, Great Britain.
 The CT generated images were obtained by a specially designed algorithm, since  no viable method existed.</p>
-<div style="display:flex; gap:20px;">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim1.jpg"><img alt="../_images/compim1.jpg" src="../_images/compim1.jpg" style="width: 40%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim2.jpg"><img alt="../_images/compim2.jpg" src="../_images/compim2.jpg" style="width: 20%;" />
+</a>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
-    <img src="immagini_sorgente/compim1.jpg" width="300">
+    <img src="immagini_sorgente/compim1.jpg" width="250">
     <p align="center">
     </p>
   </div>
   <div style="width:45%;">
-    <img src="immagini_sorgente/compim2.jpg" width="200">
-    <p align="center">
-    </p>
+    <img src="immagini_sorgente/compim2.jpg" width="250">
+    <p align=" center">-->
+<!--     </p>
   </div>
-</div>
+</div> -->
 <ol class="arabic simple" start="2">
 <li><p>April 10, 2019. The first image of a black hole by means of the Event Horizon telescope.
-The image was constructed from enormous quantities of data collected alla around the world with an algorithmic computation.</p></li>
+The image was constructed from enormous quantities of data collected all around the world with an algorithmic computation.</p></li>
 </ol>
-<div style="display:flex; gap:20px;">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim3.jpg"><img alt="../_images/compim3.jpg" src="../_images/compim3.jpg" style="width: 50%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim4.jpg"><img alt="../_images/compim4.jpg" src="../_images/compim4.jpg" style="width: 50%;" />
+</a>
+</figure>
+<!-- <div style="display:flex; gap:20px;">
   <div style="width:45%;">
-    <img src="immagini_sorgente/compim3.jpg" width="350">
+    <img src="immagini_sorgente/compim3.jpg" width="300">
     <p align="center">
     </p>
   </div>
   <div style="width:45%;">
-    <img src="immagini_sorgente/compim4.jpg" width="400">
+    <img src="immagini_sorgente/compim4.jpg" width="300">
     <p align="center">
     </p>
   </div>
-</div>
+</div> -->
 <section id="what-is-computational-imaging">
 <h2>What is Computational Imaging?<a class="headerlink" href="#what-is-computational-imaging" title="Link to this heading">#</a></h2>
 <p><strong>chatgpt</strong>
@@ -451,16 +468,20 @@ The image was constructed from enormous quantities of data collected alla around
 <em>Computational imaging merges advanced hardware (sensors, optics) with sophisticated algorithms to overcome traditional optical limits, creating superior images from encoded, often non-traditional, data.</em></p>
 <p><strong>My definition</strong>
 <em>Computational imaging refers to imaging systems where the measured data are not images themselves, but indirect, encoded, or incomplete measurements that are transformed into images through computational algorithms.</em></p>
-<p align="center">
-  <img src="immagini_sorgente\filt22.png"  width="500">
-</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim5.png"><img alt="../_images/compim5.png" src="../_images/compim5.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\compim5.png"  width="700">
+</p> -->
 </section>
 </section>
 <section id="computational-imaging-as-an-inverse-problem">
 <h1>Computational imaging as an inverse problem<a class="headerlink" href="#computational-imaging-as-an-inverse-problem" title="Link to this heading">#</a></h1>
 <p>Computational imaging is the formulation of image formation as an inverse problem,
 where an unknown image or object x is estimated from measured data y by inverting a
-Forward (or direct)  model:
+forward (or direct)  model:
 $<span class="math notranslate nohighlight">\(y=\mathcal{F}x+e\)</span><span class="math notranslate nohighlight">\(
 The imaging physics is modelled by the operator \)</span>\mathcal{F}$.</p>
 <p><strong>What is an inverse problem?</strong></p>
@@ -472,6 +493,10 @@ The imaging physics is modelled by the operator \)</span>\mathcal{F}$.</p>
 <li><p>In instrumental physics, the direct problem is the measure of the object, obtained by the instrument, whereas the inverse problem consists in determining the object given the measure.</p></li>
 <li><p>In direct problems usually there is a loss of information from the input to the output. Hence, in the solution of the inverse problem it is impossible to recover the object exactly, due to the information lost in the direct one.</p></li>
 </ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim6.png"><img alt="../_images/compim6.png" src="../_images/compim6.png" style="width: 80%;" />
+</a>
+</figure>
 <p align="center">
   <img src="immagini_sorgente\compim6.png"  width="600">
 </p>
@@ -481,59 +506,128 @@ The imaging physics is modelled by the operator \)</span>\mathcal{F}$.</p>
 <p>The direct linear model can be expressed as:
 $<span class="math notranslate nohighlight">\(Ax=y\)</span>$<br />
 where A is a matrix representing the linear operator acting on the image x to generate the data y.</p>
-<p align="center">
+<!-- <p align="center">
 <img src="immagini_sorgente\compim5.png"  width="700">
   <p align="center"> 
-</p>
+</p> -->
 <p>Since the unknown object represented as an image, in the previous model we suppose
 to reshape the image into an array x following a lexicographical order, and the data into an array y.</p>
 <p>Data are usually affected by <em>noise</em>, due to different physical processes.
 For the moment, we can consider additive noise so that the final forward model is:
 $<span class="math notranslate nohighlight">\(Ax=y+e\)</span>$
 The noise is a random process described by a random variable.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim10.png"><img alt="../_images/compim10.png" src="../_images/compim10.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim10.png"  width="800">
-</p>
-<p align="center">
-  <img src="immagini_sorgente\compim20
-  .png"  width="500">
-</p>
+</p> -->
 <p><strong>Examples of imaging systems</strong></p>
 <p>In general these different imaging systems  are modelled by a different matrix <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <p><em>Optical imaging systems</em></p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim7.png"><img alt="../_images/compim7.png" src="../_images/compim7.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim7.png"  width="800">
 </p>
+ -->
 <p><em>Medical imaging systems</em></p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim8.png"><img alt="../_images/compim8.png" src="../_images/compim8.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim8.png"  width="800">
-</p>
+</p> -->
 <p><em>Other imaging systems</em></p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim9.png"><img alt="../_images/compim9.png" src="../_images/compim9.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim9.png"  width="800">
-</p>
+</p> -->
 <p><strong>Examples of linear computational imaging applications</strong>
 (modelled by linear inverse problems)</p>
+<p><strong>Image denoise</strong></p>
+<p>The aim is to remove noise from the acquired image by means of an algorithm that is more complex hat a simple low-pass filter.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim22.png"><img alt="../_images/compim22.png" src="../_images/compim22.png" style="width: 60%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\compim22.png"  width="400">
+</p> -->
 <p><strong>Image deblur</strong></p>
-<p align="center">
+<p>The aim is to remove the blur present on the recorded image, usually due to lens imperfection or to the relative movement between the source anc the object.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim11.png"><img alt="../_images/compim11.png" src="../_images/compim11.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim11.png"  width="800">
-</p>
+</p> -->
 <p><strong>Image superesolution: microscopy</strong></p>
-<p align="center">
+<p>The aim is to improve the resolution (i.e. the image size, equivalnet to reduce the pixel size) of the recorded coarse image.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim12.png"><img alt="../_images/compim12.png" src="../_images/compim12.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim12.png"  width="800">
-</p>
+</p> -->
 <p><strong>Image superesolution: photography</strong></p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim13.png"><img alt="../_images/compim13.png" src="../_images/compim13.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim13.png"  width="800">
-</p>
+</p> -->
 <p><strong>Image inpainting</strong></p>
-<p align="center">
+<p>The aim is to <em>repair</em> the recorded damaged image by substituting coherent information in place of the corrupted one.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim14.png"><img alt="../_images/compim14.png" src="../_images/compim14.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim14.png"  width="800">
-</p>
+</p> -->
 <p><strong>Medical image reconstruction: computed tomography</strong></p>
-<p align="center">
+<p>The aim is to create the image of the object (part of the body or other different objects) from the recorded data that are not images but counting of photons.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim15.png"><img alt="../_images/compim15.png" src="../_images/compim15.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim15.png"  width="800">
-</p></section>
+</p> -->
+<p><strong>Medical image reconstruction: Magentic Resonance</strong></p>
+<p>The aim is to create the image of the object (part of the body) from the recordeed data that are frequencies on the Fourier space along predefined directions or paths.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim21.png"><img alt="../_images/compim21.png" src="../_images/compim21.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\compim21.png"  width="800">
+</p> --><p>The solution of the inverse problem requires to find the <em>exact image x representing the object</em> given the data <span class="math notranslate nohighlight">\(y\)</span> and the matrix <span class="math notranslate nohighlight">\(A\)</span> representing the physics of the imaging instrument.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim20.png"><img alt="../_images/compim20.png" src="../_images/compim20.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\compim20.png"  width="800">
+</p> -->
+<p><strong>Why are so important algorithms for the solution of inverse problems in imaging ?</strong></p>
+<ul class="simple">
+<li><p>inverse problems are ill-posed</p></li>
+<li><p>imaging deals with large data</p></li>
+<li><p>imaging applications often requires a fast solution</p></li>
+</ul>
+</section>
 </section>
 <section id="inverse-problems-are-ill-posed">
 <h1>Inverse problems are ill-posed<a class="headerlink" href="#inverse-problems-are-ill-posed" title="Link to this heading">#</a></h1>
@@ -549,9 +643,13 @@ This means that it small varies for small variations of the data.</p></li>
 <p>What is an <strong>ill posed</strong> problem?</p>
 <p>A problem where <em>at least one of the three conditions is not satisfied</em>.</p>
 <p><em>Linear inverse imaging problems are ill-posed.</em></p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim16.png"><img alt="../_images/compim16.png" src="../_images/compim16.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim16.png"  width="600">
-</p>
+</p> -->
 <ul class="simple">
 <li><p>A is a linear operator mapping an image in the
 Image space X to a noise free image in the image space Y
@@ -580,12 +678,16 @@ the least-squares problem:</p></li>
 <li><p>If M&lt;N the system has <strong>infinite possible solutions</strong>.
 Again we substitute the linear system with a least-squares problem.</p></li>
 </ol>
-<p><em>The result is that the numerical inversion produces results that are physically unacceptable even mathematically acceptable</em></p>
+<p><em>The result is that the numerical inversion produces results that are physically unacceptable even if mathematically acceptable</em></p>
 <p>In inverse problems data are always affected by noise and the solution method amplifies that noise, producing a large and wildly oscillating function that completely hides the physical solution corresponding to noise-free data.</p>
 <p>Even if the solution of the linear system exists and is unique (case 1.) it is completely corrupted due to the small noise on the data (ill-conditioned system).</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim17.png"><img alt="../_images/compim17.png" src="../_images/compim17.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim17.png"  width="700">
-</p>
+</p> -->
 <p>The simple inversion is called the <strong>naive solution</strong>. As visible from the previous image it is not a good and reliable solution. The noise present on the data is amplified in the solution.</p>
 <p><em>Why the naive approach fails?</em></p>
 <div class="math notranslate nohighlight">
@@ -616,15 +718,20 @@ $<span class="math notranslate nohighlight">\( \sigma_1 \geq \sigma_2 \geq \ldot
 <div class="math notranslate nohighlight">
 \[x_{naive}=A^{-1}(y+e)=x+A^{-1}e=x+\sum_{i=1}^k \frac{1}{\sigma_i}v_iu_i^Te\]</div>
 <ul class="simple">
-<li><p>The error components <span class="math notranslate nohighlight">\(u_i^Te\)</span> are small and typically of the same order of magnite for all i.</p></li>
+<li><p>The error components <span class="math notranslate nohighlight">\(u_i^Te\)</span> are small and typically of the same order of magnitude for all <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
 <li><p>The singular vectors corresponding to the smaller singular values typically
 tend to have more sign changes.</p></li>
 <li><p>The singular vectors corresponding to the smaller singular values typically represent
-higher frequency information. That is, as <span class="math notranslate nohighlight">\(i\)</span> increases, the vectors   <span class="math notranslate nohighlight">\(u_i\)</span>        and <span class="math notranslate nohighlight">\(v_i\)</span>  tend to have more sign changes.</p></li>
+higher frequency information. That is, as <span class="math notranslate nohighlight">\(i\)</span> increases, the vectors   <span class="math notranslate nohighlight">\(u_i\)</span>  and <span class="math notranslate nohighlight">\(v_i\)</span>  tend to have more sign changes.</p></li>
 </ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim18.png"><img alt="../_images/compim18.png" src="../_images/compim18.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- 
 <p align="center">
   <img src="immagini_sorgente\compim18.png"  width="700">
-</p>
+</p> -->
 <p>When we divide by a small singular value such as <span class="math notranslate nohighlight">\(\sigma_N\)</span> we greatly magnify the
 corresponding error component <span class="math notranslate nohighlight">\(u_N^Te\)</span> , which in turn contributes a large multiple
 of the high frequency information contained in  <span class="math notranslate nohighlight">\(v_N\)</span>     to the computed solution.</p>
@@ -633,14 +740,17 @@ of the high frequency information contained in  <span class="math notranslate no
 \[x_{naive}=A^{-1}y=V \Sigma^{-1} U^Ty= \sum_{i=1}^k \frac{u_i^Ty}{\sigma_i}v_i\]</div>
 <p>The quantities  <span class="math notranslate nohighlight">\(\frac{u_i^T y}{\sigma_i}\)</span>   are expansion coefficients of the basis vectors <span class="math notranslate nohighlight">\(v_i\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[downarrow\]</div>
+\[\downarrow\]</div>
 <p>When these quantities are small in magnitude, the solution has very
 little contribution from <span class="math notranslate nohighlight">\(v_i\)</span> , but when  <span class="math notranslate nohighlight">\(\sigma_i\)</span>  is very small, these quantities can be large due to the presence of the noise in the data term <span class="math notranslate nohighlight">\(y+e\)</span>.</p>
-<p align="center">
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/compim19.png"><img alt="../_images/compim19.png" src="../_images/compim19.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
   <img src="immagini_sorgente\compim19.png"  width="700">
 </p>
-<div class="math notranslate nohighlight">
-\[ min \|Ax-(y+e)\|_2^2 + \lambda R(x)\]</div>
+ -->
 </section>
 
     <script type="text/x-thebe-config">
@@ -673,6 +783,15 @@ little contribution from <span class="math notranslate nohighlight">\(v_i\)</spa
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="fourier.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Discrete Fourier Transform and its use in image procressing</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
