@@ -386,6 +386,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discrete-fourier-transofrm">The Discrete Fourier Transofrm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform-1d">Discrete Fourier Transform 1D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-convolution-theorem">The Convolution theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform-2d">Discrete Fourier Transform 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-filtering-in-the-frequency-domain">Image filtering in the frequency domain</a></li>
 </ul>
             </nav>
         </div>
@@ -423,7 +425,7 @@ and geometrically represents the length of the vector form (0,0) to (a,b).</p>
 <p>The <em>phase</em> is the angle that the vector of the complex number makes with the positive real  axis.
 $<span class="math notranslate nohighlight">\(\phi=arg(z)=arctan(\frac{b}{a})\)</span>$</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="book/immagini_sorgente/complex.png"><img alt="book/immagini_sorgente/complex.png" src="book/immagini_sorgente/complex.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="book/immagini_sorgente/complex.png"><img alt="book/immagini_sorgente/complex.png" src="book/immagini_sorgente/complex.png" style="width: 70%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -448,7 +450,7 @@ $<span class="math notranslate nohighlight">\(z=3+4i\)</span><span class="math n
 <p>Example:</p>
 <p>If you sum the sinuosids you obtain a better and better approximation of the square wave function.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier21.png"><img alt="../_images/fourier21.png" src="../_images/fourier21.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../_images/fourier21.png"><img alt="../_images/fourier21.png" src="../_images/fourier21.png" style="width: 80%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -470,10 +472,10 @@ $<span class="math notranslate nohighlight">\(z=3+4i\)</span><span class="math n
 <!-- <p align="center">
   <img src="immagini_sorgente\fourier23.png"  width="400">
 </p> -->
-<p>If you could add an infite number of sinusoids you get the exact function.</p>
+<p>If you could add an infinite number of sinusoids you get the exact function.</p>
 <p>The Fourier transform is a map from the space domain to the frequency domain.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier5.png"><img alt="../_images/fourier5.png" src="../_images/fourier5.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../_images/fourier5.png"><img alt="../_images/fourier5.png" src="../_images/fourier5.png" style="width: 800%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -489,7 +491,7 @@ related to the Fourier series.</p>
 \[f(x)=\sum _{k=1}^{N} A_kcos(kx)+B_ksin(kx)\]</div>
 <p>The first components of the Fourier series:</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier.png"><img alt="../_images/fourier.png" src="../_images/fourier.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../_images/fourier.png"><img alt="../_images/fourier.png" src="../_images/fourier.png" style="width: 80%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -539,7 +541,7 @@ so that:</p>
 \[\mathcal{F}^{-1}(\mathcal{F}(f))=f \]</div>
 <p>But which is the relation of the fourier transform with sinusoids?</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier7.png"><img alt="../_images/fourier7.png" src="../_images/fourier7.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier7.png"><img alt="../_images/fourier7.png" src="../_images/fourier7.png" style="width: 70%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -588,11 +590,11 @@ is a function</p>
 <p>Tha algorithm for the computation of the DFT is called <em>Fast Fourier Transform</em> (FFT) and it has a computational complexity of <span class="math notranslate nohighlight">\(O(Nlog_2(N))\)</span> when <span class="math notranslate nohighlight">\(N=2^p\)</span> (i.e N is a power of 2).</p>
 <p>Examples:</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier8.png"><img alt="../_images/fourier8.png" src="../_images/fourier8.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier8.png"><img alt="../_images/fourier8.png" src="../_images/fourier8.png" style="width: 70%;" />
 </a>
 </figure>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier11.png"><img alt="../_images/fourier11.png" src="../_images/fourier11.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier11.png"><img alt="../_images/fourier11.png" src="../_images/fourier11.png" style="width: 70%;" />
 </a>
 </figure>
 <!-- <div style="display:flex; gap:20px;">
@@ -608,11 +610,11 @@ is a function</p>
   </div>
 </div> -->
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier12.png"><img alt="../_images/fourier12.png" src="../_images/fourier12.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier12.png"><img alt="../_images/fourier12.png" src="../_images/fourier12.png" style="width: 70%;" />
 </a>
 </figure>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier13.png"><img alt="../_images/fourier13.png" src="../_images/fourier13.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier13.png"><img alt="../_images/fourier13.png" src="../_images/fourier13.png" style="width: 70%;" />
 </a>
 </figure>
 <!-- <div style="display:flex; gap:20px;">
@@ -628,7 +630,7 @@ is a function</p>
   </div>
 </div> -->
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier14.png"><img alt="../_images/fourier14.png" src="../_images/fourier14.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier14.png"><img alt="../_images/fourier14.png" src="../_images/fourier14.png" style="width: 70%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -666,7 +668,7 @@ $<span class="math notranslate nohighlight">\(F(u)=\int_{-\infty}^{\infty} f(x)e
 <p><strong>Hence the convolution <span class="math notranslate nohighlight">\(f(x)*h(x)\)</span> in spatial domain corresponds to the product <span class="math notranslate nohighlight">\(F(u)\cdot H(u)\)</span> in the frequency (or Fourier) domain.</strong></p>
 <p>It also true the opposite:</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier15.png"><img alt="../_images/fourier15.png" src="../_images/fourier15.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier15.png"><img alt="../_images/fourier15.png" src="../_images/fourier15.png" style="width: 60%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -675,7 +677,7 @@ $<span class="math notranslate nohighlight">\(F(u)=\int_{-\infty}^{\infty} f(x)e
 </p> -->
 <p>This is the basis of a very fast algorithm to perform the convolution between two functions (especially in 2D domain, where the cost is larger):</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier16.png"><img alt="../_images/fourier16.png" src="../_images/fourier16.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier16.png"><img alt="../_images/fourier16.png" src="../_images/fourier16.png" style="width: 50%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -686,11 +688,11 @@ $<span class="math notranslate nohighlight">\(F(u)=\int_{-\infty}^{\infty} f(x)e
 <p>The theorem also allows to think which are, in the frequency domain, the effects of a filter designed in the spatial domain and viceversa.</p>
 <p>Example: Denoise a signal by means of gaussian deconvolution</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier17.png"><img alt="../_images/fourier17.png" src="../_images/fourier17.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier17.png"><img alt="../_images/fourier17.png" src="../_images/fourier17.png" style="width: 70%;" />
 </a>
 </figure>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier18.png"><img alt="../_images/fourier18.png" src="../_images/fourier18.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier18.png"><img alt="../_images/fourier18.png" src="../_images/fourier18.png" style="width: 70%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -704,11 +706,11 @@ $<span class="math notranslate nohighlight">\(F(u)=\int_{-\infty}^{\infty} f(x)e
 </p> -->
 <p>The noise in the Fourier space is in the low frequencies. The FT of a Gaussian function is again a Gaussian function. In the frequency (or Fourier) space we multipy the Fourier Transform and obtain the denoising filter in that space.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier19.png"><img alt="../_images/fourier19.png" src="../_images/fourier19.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier19.png"><img alt="../_images/fourier19.png" src="../_images/fourier19.png" style="width: 60%;" />
 </a>
 </figure>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/fourier20.png"><img alt="../_images/fourier20.png" src="../_images/fourier20.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fourier20.png"><img alt="../_images/fourier20.png" src="../_images/fourier20.png" style="width: 60%;" />
 </a>
 </figure>
 <!-- <p align="center">
@@ -722,6 +724,242 @@ and if finally you apply the Inverse Fourier Transform you obtain a denoised sig
   <p align="center"> 
 </p>
  --></section>
+<section id="discrete-fourier-transform-2d">
+<h2>Discrete Fourier Transform 2D<a class="headerlink" href="#discrete-fourier-transform-2d" title="Link to this heading">#</a></h2>
+<p>To deal with images, we must extend the DFT and IDFT to 2D as follows (where <span class="math notranslate nohighlight">\(m,n\)</span> are the spatial coordinates and <span class="math notranslate nohighlight">\(k,l\)</span> are the frequency coordinates):</p>
+<p>DFT2:
+$<span class="math notranslate nohighlight">\(\hat f_{k,l}=\sum_{m=0}^{N-1}\sum_{n=0}^{N-1} f_{m,n} e^{-i \frac{2 \pi}{N}(km+ln)}, \ \ m,n=0, \ldots N-1 \)</span>$</p>
+<p>IDFT2:
+$<span class="math notranslate nohighlight">\( f_{m,n}=\sum_{k=0}^{N-1}\sum_{l=0}^{N-1} \hat f_{k,l} \frac{1}{N^2} e^{i \frac{2 \pi}{N}(km+ln)}, \ \ k,l=0, \ldots N-1 \)</span>$</p>
+<p><strong>How to read the DFT of an image?</strong></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier27.png"><img alt="../_images/fourier27.png" src="../_images/fourier27.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier27.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>Examples.</p>
+<p>The first image is a cosine function along x axis. The Fourier transform of a cisine function (as we have seen in 1D) is essentially one frequency (and its negative counterpart). The central point at 0 is due to the fact that the mean of the brightness is 0 (in a range [0,255] is 128 but it can be shifted to 0).</p>
+<p>The second image is an image of a cosine function of higher frequency. We have still three dots but more separated because the frequecy has increased.</p>
+<p>The third image is a sum of two cosine functions.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier25.png"><img alt="../_images/fourier25.png" src="../_images/fourier25.png" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier26.png"><img alt="../_images/fourier26.png" src="../_images/fourier26.png" style="width: 70%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\fourier25.png"  width="600">
+  <p align="center"> 
+</p>
+<p align="center">
+  <img src="immagini_sorgente\fourier26.png"  width="400">
+  <p align="center"> 
+</p>
+<p>Examples with simple objects:</p>
+<p>High frequencies are necessary to create the borders of the objects.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier28.png"><img alt="../_images/fourier28.png" src="../_images/fourier28.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier28.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>Examples with more natural images:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier29.png"><img alt="../_images/fourier29.png" src="../_images/fourier29.png" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier30.png"><img alt="../_images/fourier30.png" src="../_images/fourier30.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- 
+<p align="center">
+  <img src="immagini_sorgente\fourier29.png"  width="600">
+  <p align="center"> 
+</p>
+
+<p align="center">
+  <img src="immagini_sorgente\fourier30.png"  width="600">
+  <p align="center"> 
+</p> --></section>
+<section id="image-filtering-in-the-frequency-domain">
+<h2>Image filtering in the frequency domain<a class="headerlink" href="#image-filtering-in-the-frequency-domain" title="Link to this heading">#</a></h2>
+<p>The values in the Fourier domain, usually called frequencies, have some useful properties for image manipulation, such as</p>
+<ul class="simple">
+<li><p>Reduce the noise on the image (denoising)</p></li>
+<li><p>Reduce the space occupied by the image (compression)</p></li>
+</ul>
+<p><strong>Denoising image with DFT</strong></p>
+<ul class="simple">
+<li><p>To denoise an image using a Fast Fourier Transform (FFT) filter, we can use a simple method of applying a low-pass filter in the frequency domain.</p></li>
+<li><p>The idea is to suppress high-frequency noise, which typically exists in the higher frequencies of
+the Fourier spectrum, while preserving the low-frequency components, which generally correspond to the important structure of the image.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier31.png"><img alt="../_images/fourier31.png" src="../_images/fourier31.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier31.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>If you apply a more severe low-pass filter:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier32.png"><img alt="../_images/fourier32.png" src="../_images/fourier32.png" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier33.png"><img alt="../_images/fourier33.png" src="../_images/fourier33.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier32.png"  width="600">
+  <p align="center"> 
+</p>
+
+<p align="center">
+  <img src="immagini_sorgente\fourier33.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>you obtain a burrier and blurrier image.</p>
+<ul class="simple">
+<li><p>To reduce the ringing artifacts, you can apply a soft cutoff or smooth filter in the frequency domain. This can be done by using a smoother low-pass filter, such as a Gaussian filter or Butterworth filter, instead of a sharp circular mask. These filters gradually attenuate the high frequencies, which helps to avoid the abrupt transitions that lead to ringing.</p></li>
+</ul>
+<p>If you conversely cut off the lower frequencies (<strong>high-pass filtering</strong>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier34.png"><img alt="../_images/fourier34.png" src="../_images/fourier34.png" style="width: 70%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier35.png"><img alt="../_images/fourier35.png" src="../_images/fourier35.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier34.png"  width="600">
+  <p align="center"> 
+</p>
+
+
+<p align="center">
+  <img src="immagini_sorgente\fourier35.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>you essentially remove the constant bright regions and, increasing the filter intensity, you evidence the edges.</p>
+<p>Let us see a python code to apply a low-pass filter to a noisy image:</p>
+<p><strong>Parameter</strong>: The <strong>cutoff_frequency</strong> defines how aggressive the denoising is. A higher value keeps more details but may allow some noise to persist, while a lower value results in stronger denoising but may also remove fine details.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">denoise_fft</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="c1"># 1. Load the image (grayscale for simplicity)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+    
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>  <span class="c1"># Normalizzazione</span>
+    <span class="c1"># add gaussian noise</span>
+    
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">noisy_img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">+</span> <span class="n">noise</span>
+    
+
+    <span class="c1"># 2. FFT: Transform image to frequency domain</span>
+    <span class="c1"># We use fftshift to move the zero-frequency component to the center</span>
+    <span class="n">f_transform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">noisy_img</span><span class="p">)</span>
+    <span class="n">f_shift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f_transform</span><span class="p">)</span>
+
+    <span class="c1"># 3. Low-pass filter: Construct a circular mask</span>
+    <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">crow</span><span class="p">,</span> <span class="n">ccol</span> <span class="o">=</span> <span class="n">rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cols</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[:</span><span class="n">rows</span><span class="p">,</span> <span class="p">:</span><span class="n">cols</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">ccol</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">crow</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">cutoff</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+    <span class="c1"># 4. Apply the filter (fshift * mask)</span>
+    <span class="n">f_shift_filtered</span> <span class="o">=</span> <span class="n">f_shift</span> <span class="o">*</span> <span class="n">mask</span>
+
+    <span class="c1"># 5. Inverse FFT: Transform back to spatial domain</span>
+    <span class="c1"># Shift back before performing inverse FFT</span>
+    <span class="n">f_ishift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">f_shift_filtered</span><span class="p">)</span>
+    <span class="n">img_back</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">f_ishift</span><span class="p">)</span>
+    <span class="n">img_back</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">img_back</span><span class="p">)</span> <span class="c1"># Get the magnitude</span>
+
+    <span class="c1"># --- Visualization ---</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">141</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Image&#39;</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">143</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">f_shift</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;FFT Spectrum (Frequency Domain)&#39;</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">144</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_back</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Denoised Image (Low-pass Filtered)&#39;</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">142</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">noisy_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Noisy Image&#39;</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Run the function</span>
+<span class="n">denoise_fft</span><span class="p">(</span><span class="s1">&#39;Baboon.bmp&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2a9834f4e349a5e9882b7f29a1514d75766ed579fc8a62bc8d3de2d4f71485f9.png" src="../_images/2a9834f4e349a5e9882b7f29a1514d75766ed579fc8a62bc8d3de2d4f71485f9.png" />
+</div>
+</div>
+<p>In these examples we have always considered (and visualized) the <em>magnitude</em> of the Fourier transform.</p>
+<p>However the <em>phase</em> is very important.
+Here we apply a DFT2 to the image, we keep he magnitude and set all the phases to zero and then we apply an IDFT2.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier36.png"><img alt="../_images/fourier36.png" src="../_images/fourier36.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier36.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>If you remove all the phase information, you obtain an image that is not recognizible.</p>
+<p>If at the opposite we keep all the phases and set the magnitude to a constant value (for example the mean of the values) we obtain:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier37.png"><img alt="../_images/fourier37.png" src="../_images/fourier37.png" style="width: 30%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier37.png"  width="300">
+  <p align="center"> 
+</p>
+ -->
+<p>Another example:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier38.png"><img alt="../_images/fourier38.png" src="../_images/fourier38.png" style="width: 70%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier38.png"  width="700">
+  <p align="center"> 
+</p> --><p><em>Hybrid images</em></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier39.png"><img alt="../_images/fourier39.png" src="../_images/fourier39.png" style="width: 60%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\fourier39.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>If you the image from near the screen you mainly see Albert Einstein, but if you are far from the screen you mainly see Marilyn Monroe.  This is because from far you apply a sort of low-pass filter in your eyes.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -785,6 +1023,8 @@ and if finally you apply the Inverse Fourier Transform you obtain a denoised sig
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discrete-fourier-transofrm">The Discrete Fourier Transofrm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform-1d">Discrete Fourier Transform 1D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-convolution-theorem">The Convolution theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform-2d">Discrete Fourier Transform 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-filtering-in-the-frequency-domain">Image filtering in the frequency domain</a></li>
 </ul>
   </nav></div>
 
