@@ -187,8 +187,6 @@
 <li class="toctree-l1"><a class="reference internal" href="conv_filters.html">Image filtering</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">The Discrete Fourier Transform and its use in image procressing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compimag.html">Computational imaging and inverse problems</a></li>
-
-
 </ul>
 
     </div>
@@ -428,17 +426,14 @@ $<span class="math notranslate nohighlight">\(|z|=\sqrt{a^2+b^2}\)</span>$
 and geometrically represents the length of the vector form (0,0) to (a,b).</p>
 <p>The <em>phase</em> is the angle that the vector of the complex number makes with the positive real  axis.
 $<span class="math notranslate nohighlight">\(\phi=arg(z)=arctan(\frac{b}{a})\)</span>$</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="book/immagini_sorgente/complex.png"><img alt="book/immagini_sorgente/complex.png" src="book/immagini_sorgente/complex.png" style="width: 70%;" />
-</a>
-</figure>
-<!-- <p align="center">
-  <img src="immagini_sorgente\complex.png"  width="400">
-</p> -->
 <p>Using magnitude and pahse the complex number can be written as:
 $<span class="math notranslate nohighlight">\(z=|z|e^{i\phi}\)</span><span class="math notranslate nohighlight">\(
 by measn of the Euler formula:
 \)</span><span class="math notranslate nohighlight">\(e^{i\phi}=cos(\phi)+isin(\phi)\)</span>$</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/fourier00.png"><img alt="../_images/fourier00.png" src="../_images/fourier00.png" style="width: 40%;" />
+</a>
+</figure>
 <p>Example:
 $<span class="math notranslate nohighlight">\(z=3+4i\)</span><span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(|z|=\sqrt{25}=5\)</span><span class="math notranslate nohighlight">\(
@@ -920,7 +915,7 @@ the Fourier spectrum, while preserving the low-frequency components, which gener
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0f2679bc841b7436c46ba3c08c26899033ce05c52e9e0420998b1bc0b1abfa6d.png" src="../_images/0f2679bc841b7436c46ba3c08c26899033ce05c52e9e0420998b1bc0b1abfa6d.png" />
+<img alt="../_images/c4af00ab3bd08c86964f113d2c164c98083afbc267a93335532254488e53015e.png" src="../_images/c4af00ab3bd08c86964f113d2c164c98083afbc267a93335532254488e53015e.png" />
 </div>
 </div>
 <p>In these examples we have always considered (and visualized) the <em>magnitude</em> of the Fourier transform.</p>
@@ -963,6 +958,150 @@ Here we apply a DFT2 to the image, we keep he magnitude and set all the phases t
   <p align="center"> 
 </p> -->
 <p>If you the image from near the screen you mainly see Albert Einstein, but if you are far from the screen you mainly see Marilyn Monroe.  This is because from far you apply a sort of low-pass filter in your eyes.</p>
+<p><strong>Image compression by means of DFT</strong></p>
+<ul class="simple">
+<li><p>The Discrete Fourier Transform (DFT) plays a significant role in image compression, a crucial process for reducing file sizes while maintaining image quality.</p></li>
+<li><p>By transforming the spatial representation of an image into the frequency domain, the DFT allows us to identify and retain only the most significant frequency components, discarding less important data without a substantial loss of detail.</p></li>
+<li><p>Techniques such as the JPEG compression algorithm leverage this principle, using transformations similar to the DFT to efficiently encode image data.</p></li>
+<li><p>By focusing on the most critical frequencies, the DFT enables significant reductions in image size, allowing for faster transmission and storage while preserving essential features.</p></li>
+</ul>
+<p><em>Compression Algorithm by means of DFT:</em></p>
+<ol class="arabic simple">
+<li><p>Read the image</p></li>
+<li><p>FFT: Apply a 2D Fast Fourier Transform (np.fft.fft2) to convert the image into frequency space.</p></li>
+</ol>
+<p>3.Compression: We discard the high-frequency components by setting their magnitude to zero
+if they are below a threshold. This allows us to compress the image by removing less significant
+frequency components.</p>
+<ol class="arabic simple" start="4">
+<li><p>Reconstruction: The image is reconstructed by combining the modified magnitude
+with the original phase, and then performing an inverse FFT (np.fft.ifft2).</p></li>
+<li><p>Display: Finally, the original and compressed images are displayed side by side for comparison.</p></li>
+</ol>
+<p><strong>Parameter: threshold</strong>. This is the fraction of the maximum magnitude below which the
+frequency components are discarded. You can adjust this to control the compression rate.
+A lower value will preserve more high-frequency details and result in less compression,
+while a higher value will discard more frequencies, resulting in more compression</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compress_image_with_fft</span><span class="p">(</span><span class="n">threshold</span><span class="p">):</span>
+    <span class="c1"># Load the image (in grayscale for simplicity)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;peppers256.png&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Apply FFT to the image</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">)))</span>
+    
+    
+
+    <span class="n">fshift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>  <span class="c1"># Shift the zero-frequency component to the center</span>
+    
+    <span class="c1">#plt.figure()</span>
+    <span class="c1">#plt.imshow(np.log(abs(fshift)),cmap=&#39;gray&#39;)</span>
+    <span class="c1">#plt.show()</span>
+    
+    <span class="c1"># Compute the magnitude and phase</span>
+    <span class="n">magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fshift</span><span class="p">)</span>
+    <span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">fshift</span><span class="p">)</span>
+    
+  
+    <span class="c1"># Compress the image by setting small magnitude components to zero</span>
+    <span class="n">magnitude_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">threshold</span>
+    <span class="n">magnitude</span><span class="p">[</span><span class="n">magnitude</span> <span class="o">&lt;</span> <span class="n">magnitude_threshold</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+    <span class="c1"># Reconstruct the image from the modified magnitude and original phase</span>
+    <span class="n">fshift_compressed</span> <span class="o">=</span> <span class="n">magnitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">phase</span><span class="p">)</span>
+    
+    <span class="c1"># Inverse FFT to get the compressed image in spatial domain</span>
+    <span class="n">f_ishift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fshift_compressed</span><span class="p">)</span>
+    <span class="n">img_compressed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">f_ishift</span><span class="p">)</span>
+    <span class="n">img_compressed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">img_compressed</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">img_compressed</span><span class="p">,</span> <span class="n">img</span>
+
+<span class="c1"># Path to the input image</span>
+<span class="c1">#image_path = &#39;camera_image.jpg&#39;  # Change this to your image file path</span>
+
+<span class="c1"># Compress the image with FFT</span>
+<span class="n">compressed_image</span><span class="p">,</span> <span class="n">original_image</span> <span class="o">=</span> <span class="n">compress_image_with_fft</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">)</span>
+
+<span class="c1"># Display the original and compressed images</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Original image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">original_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Image&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compressed image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">compressed_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Compressed Image&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">45</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="k">return</span> <span class="n">img_compressed</span><span class="p">,</span> <span class="n">img</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="c1"># Path to the input image</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1">#image_path = &#39;camera_image.jpg&#39;  # Change this to your image file path</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> 
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="c1"># Compress the image with FFT</span>
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">compressed_image</span><span class="p">,</span> <span class="n">original_image</span> <span class="o">=</span> <span class="n">compress_image_with_fft</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="c1"># Display the original and compressed images</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="nn">Cell In[2], line 6,</span> in <span class="ni">compress_image_with_fft</span><span class="nt">(threshold)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span><span class="w"> </span><span class="nf">compress_image_with_fft</span><span class="p">(</span><span class="n">threshold</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="c1"># Load the image (in grayscale for simplicity)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;peppers256.png&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="c1"># Apply FFT to the image</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="nn">File /opt/anaconda3/envs/libro/lib/python3.13/site-packages/matplotlib/pyplot.py:2614,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2610</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2611</span> <span class="k">def</span><span class="w"> </span><span class="nf">imread</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2612</span>         <span class="n">fname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="n">BinaryIO</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">2613</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2614</span>     <span class="k">return</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+
+<span class="nn">File /opt/anaconda3/envs/libro/lib/python3.13/site-packages/matplotlib/image.py:1520,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1513</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1514</span>     <span class="c1"># Pillow doesn&#39;t handle URLs directly.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1515</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1516</span>         <span class="s2">&quot;Please open the URL for reading and pass the &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1517</span>         <span class="s2">&quot;result to Pillow, e.g. with &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1518</span>         <span class="s2">&quot;``np.array(PIL.Image.open(urllib.request.urlopen(url)))``.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1519</span>         <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1520</span> <span class="k">with</span> <span class="n">img_open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1521</span>     <span class="k">return</span> <span class="p">(</span><span class="n">_pil_png_to_float_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1522</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span><span class="p">)</span> <span class="k">else</span>
+<span class="g g-Whitespace">   </span><span class="mi">1523</span>             <span class="n">pil_to_array</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+
+<span class="nn">File /opt/anaconda3/envs/libro/lib/python3.13/site-packages/PIL/ImageFile.py:138,</span> in <span class="ni">ImageFile.__init__</span><span class="nt">(self, fp, filename)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">:</span> <span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">|</span> <span class="n">DeferredError</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">if</span> <span class="n">is_path</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="c1"># filename</span>
+<span class="ne">--&gt; </span><span class="mi">138</span>     <span class="bp">self</span><span class="o">.</span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_exclusive_fp</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;peppers256.png&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
