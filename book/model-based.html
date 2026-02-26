@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The model-based regularization approach &#8212; Computational Imaging 2025-26 Module I</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/model-based';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Computational imaging and inverse problems" href="compimag.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/compim.png" class="logo__image only-light" alt="Computational Imaging 2025-26 Module I - Home"/>
+    <script>document.write(`<img src="../_static/compim.png" class="logo__image only-dark" alt="Computational Imaging 2025-26 Module I - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixel_processing.html">Image processing Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conv_filters.html">Image filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fourier.html">The Discrete Fourier Transform and its use in image procressing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compimag.html">Computational imaging and inverse problems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The model-based regularization approach</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/model-based.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/model-based.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The model-based regularization approach</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-model-based-regularization-approach">
+<h1>The model-based regularization approach<a class="headerlink" href="#the-model-based-regularization-approach" title="Link to this heading">#</a></h1>
+<p>Here we answer to the question:
+<strong>How to cure ill-posedness?</strong></p>
+<p>We remind that ill-posedness  does <strong>NOT</strong> depend on the algorithm used to solve the problem but only to the data of the problem. In the particular case of image restoration, it is due to the ill-conditioning of the matrix <span class="math notranslate nohighlight">\(A\)</span> of the model.  The condition number of A, <span class="math notranslate nohighlight">\(K(A)\)</span> is very large:</p>
+<div class="math notranslate nohighlight">
+\[K(a)=||A||||A^{-1}||&gt;&gt;1\]</div>
+<p>Hence, changing the algorithm does not solve the problem.</p>
+<p>We can cure ill-posedness: <em>by searching approximate solutions satisfying additional constraints deriving from the physics of the problem</em>.</p>
+<p>The information added is also called <em>a priori</em> or <em>prior image information</em> in a statistical setting (that we will see in the following of the course) or <em>regularization</em> in a mathematical setting.</p>
+<p>It is added by means of one or more regularization functions, each weighted by a postive constant called <em>regularization parameter</em>.</p>
+<p><em>Direct regularization methods</em> compute the solution of an ill posed inverse problem (imaging)  by imposing some constraints on the solution.</p>
+<p>The resulting mathematical model can be set as <strong>unconstrained minimization</strong> or <strong>constrained minimization</strong>.</p>
+<p>General and simplest unconstrained formulation  of a model-based regularization method.</p>
+<div class="math notranslate nohighlight">
+\[min_x d(Ax,y+\epsilon) + \lambda R(x)\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(d(Ax,y+\epsilon y^{\delta})\)</span> is a distance in the image space. This term is also called <em>data fitting</em> beacuse it measures the distance between the acquired data <span class="math notranslate nohighlight">\(y\)</span> and the forward model applied to the computed solution <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+</ul>
+<p>It is related with the noise distribution. In the case of gaussian noise:</p>
+<div class="math notranslate nohighlight">
+\[d(Ax,y^{\delta})=\|Ax-y^{\delta}\|_2^2.\]</div>
+<p>This is the distance function that we will mostly use in this course.</p>
+<ul class="simple">
+<li><p>the function <span class="math notranslate nohighlight">\(R(x)\)</span> is called <em>regularization</em> function  since it enforces regularity on the solution.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda &gt;0 \)</span> is <em>the regularization parameter</em>  which weights the regularization with respect to the data fitting.</p></li>
+</ul>
+<p>This approach  is also called <strong>model-based</strong> since the physical information  represented by the matrix A is part of the model and also the noise is modelle in the data fitting term.</p>
+<p>It is also possible to have more regularization terms:</p>
+<div class="math notranslate nohighlight">
+\[min_ ||Ax-y^{\delta}||_2^2+\lambda_1 R_1(x)+ \lambda _2 R_2(x) \]</div>
+<p>(usually there are no more than 2 regularization terms).</p>
+<p>We can also have a <strong>constrained formulation</strong></p>
+<p>The model-based regularization can also be formulated as a <em>constrained minimization</em>:</p>
+<div class="math notranslate nohighlight">
+\[\min_{x} \; R(x)
+\quad \text{subject to} \quad
+D(Ax, y) \leq \delta \]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta\)</span> is an approximation of the noise intensity  (such as the standard deviation or the noise norm).</p>
+<p>Under some assumptions on the functions <span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(R\)</span>, the constrained and unconstrained formulations are <em>equivalent</em>
+for some choices of <span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>. In particular, the value of <span class="math notranslate nohighlight">\(\lambda\)</span> that makes  the formulations equivalent is called <em>Lagrange multiplier</em>.</p>
+<p><em>The statistical perspective</em></p>
+<p>We can see the model-based formulation also from a statistical perspective. This is particularly useful when using
+generative neural networks.</p>
+<ul class="simple">
+<li><p>In this perspective, both the physical system and the image to approximate, x, are modelled as realizations of random variables, belonging to specific distributions.</p></li>
+<li><p>The forward model (or direct problem) is embodied by <span class="math notranslate nohighlight">\(p(y|x)\)</span>, the conditional distribution of the data <span class="math notranslate nohighlight">\(Y\)</span> given the unknown image <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Intuitively, <span class="math notranslate nohighlight">\(p(y|x)\)</span> yells us eveything of how the observations are related to the unknown. This includes bot the deterministic (or physical) properties of the imaging system (represented by <span class="math notranslate nohighlight">\(A\)</span>), and its probabilistic properties related to noise.</p></li>
+<li><p>In this bayesian setting, we can use a prior model to characterize  the likely behaviour of real images.</p></li>
+</ul>
+<p><strong>Some choices for the regularization function <span class="math notranslate nohighlight">\(R(x)\)</span></strong></p>
+<ol class="arabic simple">
+<li><p>2 norm (Tikhonov)</p></li>
+<li><p>1 norm (sparsifying) - compressed sensing</p></li>
+<li><p>p norm (p&lt;1) - compressed sensing</p></li>
+</ol>
+<p>others….</p>
+<p>All the previous regularizers can be applied both on the image and on its gradient (regularize the gradient).</p>
+<p><strong>Tikonov regularization (2 norm)</strong></p>
+<p>In the case of Tikohonv regularization on the image we have:</p>
+<div class="math notranslate nohighlight">
+\[R(x)=||x||_2^2= \sum_{i=1}^M \sum_{j=1}^N x_{i,j}^2\]</div>
+<p>Tikhonov regularization imposes smoothness on the solution.</p>
+<p>In the following example on a signal we see the difference of the result obtained for some values of the regularization parameter <span class="math notranslate nohighlight">\(\lambda\)</span> in Tikhonov regularization to remove noise froma signal.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul1.png"><img alt="../_images/regul1.png" src="../_images/regul1.png" style="width: 60%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul1.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>Below are the rsults on an image. They confirm that, increasing <span class="math notranslate nohighlight">\(\lambda\)</span>, the images become smoother but the edges are not preserved.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul2.png"><img alt="../_images/regul2.png" src="../_images/regul2.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul2.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>These are the reconstructions obtained with <span class="math notranslate nohighlight">\(\lambda=10^{-4},10^{-3},10^{-2}\)</span>, respectively.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul5.png"><img alt="../_images/regul5.png" src="../_images/regul5.png" style="width: 40%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul5.png"  width="300">
+  <p align="center"> 
+</p> -->
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul4.png"><img alt="../_images/regul4.png" src="../_images/regul4.png" style="width: 40%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul3.png"><img alt="../_images/regul3.png" src="../_images/regul3.png" style="width: 40%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul4.png"  width="300">
+  <p align="center"> 
+</p>
+
+<p align="center">
+  <img src="immagini_sorgente\regul3.png"  width="300">
+  <p align="center"> 
+</p> -->
+<p><strong>Sparsifying regularizers and compressed sensing</strong></p>
+<p>Compressed Sensing is a recent methodology of signal and image acquisition and reconstruction
+[Candes et al, IEEE transaction on Information theory, vol. 52, 2006,
+Donoho, IEEE Trans. On Inf. Thoery, vol 52, 2006]  when the signal (or image) is sparse in a certain domain.</p>
+<p>Sparse representation means that a signal can be represented with a few significant non-zero components.</p>
+<p>A sparsifying regularization function is:</p>
+<div class="math notranslate nohighlight">
+\[R(x)=||x||_1=\sum_{i=1}^m \sum_{j=1}^n |x_{i,j}|\]</div>
+<p>in this case we are assuming:</p>
+<ul class="simple">
+<li><p>The true image itself is sparse.</p></li>
+</ul>
+<p>That is:</p>
+<ul class="simple">
+<li><p>Most pixels/voxels are exactly zero</p></li>
+<li><p>Only a small fraction are nonzero
+So the reconstruction is encouraged to contain few active pixels.</p></li>
+</ul>
+<p>Typical examples:</p>
+<p>• Angiography: Blood vessels in a dark background.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul25.jpeg"><img alt="../_images/regul25.jpeg" src="../_images/regul25.jpeg" style="width: 40%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul25.jpeg"  width="200">
+  <p align="center"> 
+</p> -->
+<p>• Micro-CT of sparse structures: fibers, cracks, particles in air.</p>
+<p>• Fluorescence microscopy: Bright emitters on dark background.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul26.png"><img alt="../_images/regul26.png" src="../_images/regul26.png" style="width: 40%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul26.png"  width="200">
+  <p align="center"> 
+</p>
+ -->
+<p>• Point-source imaging: Astronomy (stars in black sky).</p>
+<p>It is usually associated to the  positivity constraint  on <span class="math notranslate nohighlight">\(x\)</span>: <span class="math notranslate nohighlight">\(x \geq 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[min _{x \geq 0} d(Ax, y^{\delta})+ \lambda ||x||_1\]</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul6.png"><img alt="../_images/regul6.png" src="../_images/regul6.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul6.png"  width="800">
+  <p align="center"> 
+</p> -->
+<p>Both 1 and 2 norm regularizers are convex functions.</p>
+<p>Another sparsifying regularizer is the p-norm, with <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[R(x)=||x||_p^p=(\sum_{i=1}^m \sum_{j=1}^n (x_{i,j})^p)^{1/p}\]</div>
+<p>This is  a <em>non convex function</em>.</p>
+<p>There are other possible reguarization functions. here is a short list …</p>
+<p><strong>The gradient of an image</strong></p>
+<p>Given an image function <span class="math notranslate nohighlight">\(f:R^2 \rightarrow R\)</span> the gradient of f is a function:</p>
+<div class="math notranslate nohighlight">
+\[\nabla f :R^2 \rightarrow R^2\]</div>
+<p>constituted by the partial derivatives of f: <span class="math notranslate nohighlight">\(\nabla f(x)=(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y})\)</span></p>
+<p>We remind that if the partial derivatives of <span class="math notranslate nohighlight">\(f\)</span> exists in a point <span class="math notranslate nohighlight">\(x_0\)</span> and are continuos in <span class="math notranslate nohighlight">\(x_0\)</span> we say that <em>f is differentiable in <span class="math notranslate nohighlight">\(x_0\)</span></em>.</p>
+<p>The gradient domain of an image is very representative of the image itself, since it shows the edges of the objects.</p>
+<p>In the discrete setting, the gradient is computed by means of discretization formulas. For example, we can use <em>forward differences</em>:</p>
+<div class="math notranslate nohighlight">
+\[\nabla x_{i,j}=(x_{i+1,j}-x_{i,j},x_{i,j+1}-x_{i,j})=(D_h x_{i,j},D_v x_{i,j})\]</div>
+<p>where <span class="math notranslate nohighlight">\(D_h\)</span> and <span class="math notranslate nohighlight">\(D_v\)</span> are the horizontal and vertical partial derivative, respectively.</p>
+<p>In the following we represent for each pixel <span class="math notranslate nohighlight">\((i,j)\)</span> the modulus of the gradient: <span class="math notranslate nohighlight">\(\sqrt{(D_h x_{i,j})^2+(D_v x_{i,j})^2}\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul7.png"><img alt="../_images/regul7.png" src="../_images/regul7.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul7.png"  width="700">
+  <p align="center"> 
+</p>
+ --><p>Hence we can apply the previous regularizers in the gradient domain:</p>
+<ul class="simple">
+<li><p>Tikhonov:
+$<span class="math notranslate nohighlight">\(R(x)=|| \nabla x||_2^2\)</span>$</p></li>
+</ul>
+<p>To express it in discrete form, we suppose to discretize as:</p>
+<div class="math notranslate nohighlight">
+\[ (\nabla x)_{i,j} = ((x_{i+1,j}-x_{i,j}), (x_{i,j+1}-x_{i,j}))\]</div>
+<ul class="simple">
+<li><p>Total Variation (1-norm applied to the gradient domain) :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[R(x)=TV(x)=||\nabla x||_1\]</div>
+<p>Using the previous discretization of the gradient of x, we obtain the isotropic discretization of TV:</p>
+<div class="math notranslate nohighlight">
+\[TV(x)=\sum_{i=1}^m \sum_{j=1}^n \sqrt{(x_{i+1,j}-x_{i,j})^2+(x_{i,j+1}-x_{i,j})^2}\]</div>
+<ul class="simple">
+<li><p>the p-norm with <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[R(x)=||\nabla x||_p^p=(\sum_{i=1}^m \sum_{j=1}^n ((x_{i+1,j}-x_{i,j})^p+(x_{i,j+1}-x_{i,j})^p)^{1/p}\]</div>
+<p>The sparsity in the image and gradient domain:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul9.png"><img alt="../_images/regul9.png" src="../_images/regul9.png" style="width: 60%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul9.png"  width="500">
+  <p align="center"> 
+</p> -->
+<p>Effects of Total Variation regularization on a signal :</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul10.png"><img alt="../_images/regul10.png" src="../_images/regul10.png" style="width: 80%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul11.png"><img alt="../_images/regul11.png" src="../_images/regul11.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul10.png"  width="600">
+  <p align="center"> 
+</p>
+
+<p align="center">
+  <img src="immagini_sorgente\regul11.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p>Effects of regularization parameter in TV regularization:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul12.png"><img alt="../_images/regul12.png" src="../_images/regul12.png" style="width: 100%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul13.png"><img alt="../_images/regul13.png" src="../_images/regul13.png" style="width: 100%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul15.png"><img alt="../_images/regul15.png" src="../_images/regul15.png" style="width: 50%;" />
+</a>
+</figure>
+<!-- 
+<p align="center">
+  <img src="immagini_sorgente\regul12.png"  width="900">
+  <p align="center"> 
+</p>
+
+
+<p align="center">
+  <img src="immagini_sorgente\regul13.png"  width="900">
+  <p align="center"> 
+</p> -->
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul15.png"  width="400">
+  <p align="center"> 
+</p> -->
+<div class="math notranslate nohighlight">
+\[\lambda=10^{-2}\]</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul16.png"><img alt="../_images/regul16.png" src="../_images/regul16.png" style="width: 50%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul16.png"  width="400">
+  <p align="center"> 
+</p> -->
+<div class="math notranslate nohighlight">
+\[\lambda=10^{-3}\]</div>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul17.png"  width="400">
+  <p align="center"> 
+</p> -->
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul17.png"><img alt="../_images/regul17.png" src="../_images/regul17.png" style="width: 50%;" />
+</a>
+</figure>
+<div class="math notranslate nohighlight">
+\[\lambda=10^{-4}\]</div>
+<p>Total Variation vs. Tikhonov regularization:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul14.png"><img alt="../_images/regul14.png" src="../_images/regul14.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul14.png"  width="700">
+  <p align="center"> 
+</p>
+ -->
+<p>It turns out that TV(x) really is a powerful method, but numerical minimization
+is more difficult than in the case of Tikhonov regularization; this is because the
+function to be minimized is no more quadratic (and actually noteven differentiable).</p>
+<p><em>Regularization with norm p=0</em></p>
+<p><span class="math notranslate nohighlight">\(||z||_0=p\)</span> where <span class="math notranslate nohighlight">\(p\)</span> is the number of nonzero elements in <span class="math notranslate nohighlight">\(z \in R^n\)</span></p>
+<p>When applied in the gradient domain, <span class="math notranslate nohighlight">\(|| \nabla z||_0\)</span> is the number of non-zero elements of the gradient of z.</p>
+<p>It imposes strong sparsity in the image (or gradient domain).</p>
+<p>This is an example of a very sparse signal in the gradient domain.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul20.png"><img alt="../_images/regul20.png" src="../_images/regul20.png" style="width: 60%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul23.png"><img alt="../_images/regul23.png" src="../_images/regul23.png" style="width: 40%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul20.png"  width="300">
+  <p align="center"> 
+</p>
+
+
+<p align="center">
+  <img src="immagini_sorgente\regul23.png"  width="200">
+  <p align="center"> 
+</p> -->
+<p>This an example of a natural (photographic) image:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul21.png"><img alt="../_images/regul21.png" src="../_images/regul21.png" style="width: 60%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul22.png"><img alt="../_images/regul22.png" src="../_images/regul22.png" style="width: 30%;" />
+</a>
+</figure>
+<!-- 
+<p align="center">
+  <img src="immagini_sorgente\regul21.png"  width="400">
+  <p align="center"> 
+</p>
+<p align="center">
+  <img src="immagini_sorgente\regul22.png"  width="150">
+  <p align="center"> 
+</p> -->
+<p>And finally this is an example of the use of <span class="math notranslate nohighlight">\(TV_0\)</span> to perform simoultaneosly super resolution and mask detection:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul24.png"><img alt="../_images/regul24.png" src="../_images/regul24.png" style="width: 90%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul24.png"  width="600">
+  <p align="center"> 
+</p> -->
+<p><strong>The regularization parameter</strong></p>
+<ul class="simple">
+<li><p>The value of the regularization parameter is the most critical setting in the model-based approach.</p></li>
+<li><p>A Too small value produeces a noisy reconstructed image, whereas a too large value produces an Image with extreme characteristics imposed by the regularization term.</p></li>
+<li><p>There are some rules for a good choice of the regularization parameter. However they usually requires multiple executions of the minimization problems to finally choose the best one for some predefined criteria. However this is too time consuming in imaging applications.</p></li>
+<li><p>The criteria can be split in:</p>
+<ul>
+<li><p>Criteria using an  estimate of  the noise e</p></li>
+<li><p>Criteria that do not use any information on the noise e</p></li>
+</ul>
+</li>
+</ul>
+<p>The general idea is that the solution <span class="math notranslate nohighlight">\(x_{\lambda}\)</span> corresponding to the regularization parameter  <span class="math notranslate nohighlight">\(\lambda\)</span>  should satisfy:</p>
+<div class="math notranslate nohighlight">
+\[x_{\lambda} \rightarrow x_{true} \ \ as \ \ ||e|| \rightarrow 0\]</div>
+<p>In particular is important to develop strategies whose convergence is as fast as possible.</p>
+<p><strong>The Discrepancy principle</strong></p>
+<p>The <em>Discrepancy Principle</em> is an <em>a posteriori criterion</em> which applies to an inverse problem modelled by:</p>
+<div class="math notranslate nohighlight">
+\[Ax=y+e=y^{\delta}, \ \ \delta=||e||_2\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\tau \geq 1\)</span>. Choose the regularization parameter <span class="math notranslate nohighlight">\(\lambda\)</span> so that:</p>
+<div class="math notranslate nohighlight">
+\[||A x_{\lambda}-y^{\delta}||_2=\tau \delta\]</div>
+<p>hence we choose <span class="math notranslate nohighlight">\(\lambda\)</span> so that the norm of the residual <span class="math notranslate nohighlight">\(||A x_{\lambda}-y^{\delta}||_2=\delta_{\epsilon}\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\delta_{\epsilon}\)</span> is an upper bound of the noise norm, i.e. <span class="math notranslate nohighlight">\(\delta_{\epsilon} \leq ||e||_2\)</span></p>
+<p>N.B. It requires an estimate of the noise norm <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
+<p><strong>Heuristic choice of <span class="math notranslate nohighlight">\(\lambda\)</span></strong></p>
+<p>A practice way of choosing the regularization parameter is trial and error.</p>
+<p>In many cases, it is possible to create a simulation with data similar to the real one and we use that simulaton  to select a suitable value of the regularization parameter <span class="math notranslate nohighlight">\(\lambda\)</span> that we then use on real data.</p>
+<p>If we plot a graph of the relative error vs. <span class="math notranslate nohighlight">\(\lambda\)</span>, the curve has a shape like the following:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul27.png"><img alt="../_images/regul27.png" src="../_images/regul27.png" style="width: 50%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul27.png"  width="400">
+  <p align="center"> 
+</p> -->
+<p>in the sense that there is a minimum corresponding to the value of <span class="math notranslate nohighlight">\(\lambda\)</span> that gives the best reconstruction in terms of relative error.</p>
+<p>As we have seen from previous examples, low values of <span class="math notranslate nohighlight">\(\lambda\)</span> do not produce sufficient regularization, whereas high values of <span class="math notranslate nohighlight">\(\lambda\)</span> <em>over-regularize</em> the image producing different effects for the different regularization terms.</p>
+<p>It is also possible to have a <em>space-varying</em> regularization parameter, i.e a matrix of regularization parameters of the same size of the image, acting pixel-to-pixel on the regularizer. This is very effective when different areas of the image should have different amount of regularization. On the contrary, it is not easy to compute this matrix, i.e. to choose different values for each pixel, and it is more expensive in terms of memory.</p>
+<p>In this case, the optimization problem to solve is:</p>
+<div class="math notranslate nohighlight">
+\[min_x ||Ax-y^{\delta}||_2^2+ \Lambda(x)R(x)\]</div>
+<p><strong>Iterative regularization</strong></p>
+<p>There is another form of regularization of inverse problems, called <em>iterative regularization</em>.</p>
+<p>It consists in stopping the iterative method solving the data fit problem:</p>
+<div class="math notranslate nohighlight">
+\[min_x ||Ax-y^{\delta}||\]</div>
+<p>(in the case of gaussian noise and euclidean distance)</p>
+<p>FAR BEFORE its convergence, i.e. perform only few iterations of the iterative method.
+We will see this approach more deeply when we will analyse iterative methos for the solution of the minimization problem.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="compimag.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Computational imaging and inverse problems</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elena Loli Piccolomini
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
