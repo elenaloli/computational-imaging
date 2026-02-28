@@ -579,6 +579,7 @@ $<span class="math notranslate nohighlight">\(R(x)=|| \nabla x||_2^2\)</span>$</
 \[ (\nabla x)_{i,j} = ((x_{i+1,j}-x_{i,j}), (x_{i,j+1}-x_{i,j}))\]</div>
 <ul class="simple">
 <li><p>Total Variation (1-norm applied to the gradient domain) :</p></li>
+<li><p>continuous formulation:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[R(x)=TV(x)=||\nabla x||_1\]</div>
@@ -589,7 +590,7 @@ $<span class="math notranslate nohighlight">\(R(x)=|| \nabla x||_2^2\)</span>$</
 <li><p>the p-norm with <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[R(x)=||\nabla x||_p^p=(\sum_{i=1}^m \sum_{j=1}^n ((x_{i+1,j}-x_{i,j})^p+(x_{i,j+1}-x_{i,j})^p)^{1/p}\]</div>
+\[R(x)=||\nabla x||_p^p=(\sum_{i=1}^m \sum_{j=1}^n (\sqrt{(x_{i+1,j}-x_{i,j})^2+(x_{i,j+1}-x_{i,j})^2})^p)^{1/p}\]</div>
 <p>The sparsity in the image and gradient domain:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/regul9.png"><img alt="../_images/regul9.png" src="../_images/regul9.png" style="width: 60%;" />
