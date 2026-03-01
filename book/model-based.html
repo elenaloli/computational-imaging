@@ -591,7 +591,35 @@ $<span class="math notranslate nohighlight">\(R(x)=|| \nabla x||_2^2\)</span>$</
 </ul>
 <div class="math notranslate nohighlight">
 \[R(x)=||\nabla x||_p^p=(\sum_{i=1}^m \sum_{j=1}^n (\sqrt{(x_{i+1,j}-x_{i,j})^2+(x_{i,j+1}-x_{i,j})^2})^p)^{1/p}\]</div>
-<p>The sparsity in the image and gradient domain:</p>
+<p>The TV regularization assumes that images are piecewise constant. This reflects is <em>sparse gradient</em>, that is a gradient image tht has only few non zeros elements.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul28.png"><img alt="../_images/regul28.png" src="../_images/regul28.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul28.png"  width="800">
+  <p align="center"> 
+</p> -->
+<p>If we plot the values of the gradient of the previuos image (really we plot the <span class="math notranslate nohighlight">\(log(\nabla)\)</span> ) we obtain the black curve of the following plot:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul29.png"><img alt="../_images/regul29.png" src="../_images/regul29.png" style="width: 50%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul29.png"  width="500">
+  <p align="center"> 
+</p> -->
+<p>the best approximation curve is <span class="math notranslate nohighlight">\(|\nabla x|^{\alpha}\)</span>, for some <span class="math notranslate nohighlight">\(\alpha \leq 1\)</span>.</p>
+<p>The Total Variation (or Total p_Variation) <em>penalizes</em> the sum of the gradients, i.e. the amount of gradients.</p>
+<p>Hence, if the noise is small and the gradient image is sparse the regularization term TV(x)  has a small value , whereas if the noise is present and the gradient is less sparse the regularization term has a larger value.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul30.png"><img alt="../_images/regul30.png" src="../_images/regul30.png" style="width: 100%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul30.png"  width="800">
+  <p align="center"> 
+</p> --><p>The sparsity in the image and gradient domain:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/regul9.png"><img alt="../_images/regul9.png" src="../_images/regul9.png" style="width: 60%;" />
 </a>
@@ -681,17 +709,33 @@ $<span class="math notranslate nohighlight">\(R(x)=|| \nabla x||_2^2\)</span>$</
 <p>It turns out that TV(x) really is a powerful method, but numerical minimization
 is more difficult than in the case of Tikhonov regularization; this is because the
 function to be minimized is no more quadratic (and actually noteven differentiable).</p>
+<p><em>Shortcomings of TV regularization</em></p>
+<p>-staircasing effects: TV tends to favour piecewise constant solutions</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/regul31.png"><img alt="../_images/regul31.png" src="../_images/regul31.png" style="width: 80%;" />
+</a>
+</figure>
+<!-- <p align="center">
+  <img src="immagini_sorgente\regul31.png"  width="600">
+  <p align="center"> 
+</p> --><p>A simple idea to reduce the staircasing effects if to use the Huber function <span class="math notranslate nohighlight">\(h_{\epsilon}(x)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}H_{\epsilon}(x)=
+\begin{cases}
+\frac{x^2}{2 \epsilon}+\frac{\epsilon}{2} &amp; \text{if  } |x| \leq \epsilon \\
+|x|  &amp; \text{otherwise } 
+\end{cases}\end{split}\]</div>
 <p><em>Regularization with norm p=0</em></p>
 <p><span class="math notranslate nohighlight">\(||z||_0=p\)</span> where <span class="math notranslate nohighlight">\(p\)</span> is the number of nonzero elements in <span class="math notranslate nohighlight">\(z \in R^n\)</span></p>
 <p>When applied in the gradient domain, <span class="math notranslate nohighlight">\(|| \nabla z||_0\)</span> is the number of non-zero elements of the gradient of z.</p>
 <p>It imposes strong sparsity in the image (or gradient domain).</p>
 <p>This is an example of a very sparse signal in the gradient domain.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/regul20.png"><img alt="../_images/regul20.png" src="../_images/regul20.png" style="width: 60%;" />
+<a class="reference internal image-reference" href="../_images/regul20.png"><img alt="../_images/regul20.png" src="../_images/regul20.png" style="width: 40%;" />
 </a>
 </figure>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/regul23.png"><img alt="../_images/regul23.png" src="../_images/regul23.png" style="width: 40%;" />
+<a class="reference internal image-reference" href="../_images/regul23.png"><img alt="../_images/regul23.png" src="../_images/regul23.png" style="width: 30%;" />
 </a>
 </figure>
 <!-- <p align="center">
