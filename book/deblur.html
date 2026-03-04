@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Image deblur (or Image Deconvolution) &#8212; Computational Imaging 2025-26 Module I</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/deblur';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Pills of numerical optimization" href="pills-optimization.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/compim.png" class="logo__image only-light" alt="Computational Imaging 2025-26 Module I - Home"/>
+    <script>document.write(`<img src="../_static/compim.png" class="logo__image only-dark" alt="Computational Imaging 2025-26 Module I - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixel_processing.html">Image processing Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conv_filters.html">Image filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fourier.html">The Discrete Fourier Transform and its use in image procressing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compimag.html">Computational imaging and inverse problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-based.html">The model-based regularization approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pills-optimization.html">Pills of numerical optimization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Image deblur (or Image Deconvolution)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/deblur.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/deblur.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Image deblur (or Image Deconvolution)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="image-deblur-or-image-deconvolution">
+<h1>Image deblur (or Image Deconvolution)<a class="headerlink" href="#image-deblur-or-image-deconvolution" title="Link to this heading">#</a></h1>
+<p>We consider the following computational imaging task:</p>
+<p><em>Given a blurred and noisy image, reconstruct an image as close as possible to the one representing the object (also called in the following “exact image” or “ground truth”)</em></p>
+<p>The blurred image can be obtained by:</p>
+<ul class="simple">
+<li><p>a lens (when the image is defocused) with imperfections</p></li>
+<li><p>the relative movement bewteen the object and the imaging system (when the blur has a specific direction).</p></li>
+</ul>
+<p>In all the cases, the blurred image is obtained from a convolution of the exact image with a blurring kernel, called Point  Spread Function (PSF).</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv1.png"><img alt="../_images/deconv1.png" src="../_images/deconv1.png" style="width: 90%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv1.png"  width="700">
+  <p align="center"> 
+</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv12.png"><img alt="../_images/deconv12.png" src="../_images/deconv12.png" style="width: 90%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv12.png"  width="800">
+  <p align="center"> 
+</p>
+<p>Hence the aim in this case is, given a noisy convolution, supposed to know the convolution kernel, <em>deconvolve</em> the observed image to get the ground truth. This is a typical liner inverse problem that can be modelled as:</p>
+<div class="math notranslate nohighlight">
+\[y^{\delta}=K*x+e\]</div>
+<p>The LSIS is described as a convolution. really, it is possible to write the convolution also as a matriux-vector product.</p>
+<p><em>Equivalence of convolution and matrix-vector product</em></p>
+<p>The convolution <span class="math notranslate nohighlight">\(K*x=b\)</span> can equivalently be written as a matrix-vector product <span class="math notranslate nohighlight">\(Ax=b\)</span> where the matrix A has the follwoing form (suppose to use periodic boundary conditions and a 3x3 kernel <span class="math notranslate nohighlight">\(p_{i,j},i,j=1, \ldots 3\)</span>):</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv24.png"><img alt="../_images/deconv24.png" src="../_images/deconv24.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv24.png"  width="700">
+  <p align="center"> 
+</p>
+<p>This matrix has a <em>cyclic block structure</em>, in particular a Block Cyclic with Cyclic Blocks (BCCB) structure.</p>
+<p>A BCCB matrix has a particular eigenvalue decomposition:</p>
+<div class="math notranslate nohighlight">
+\[A=F^T\Lambda F\]</div>
+<p>where the eigenvectior matrix <span class="math notranslate nohighlight">\(F\)</span> is the Discrete Fourier Transform matrix.</p>
+<p>Hence, to compute the matrix-vector product <span class="math notranslate nohighlight">\(b=Ax\)</span> we can compute:
+$<span class="math notranslate nohighlight">\(b=F^T\Lambda F x\)</span>$</p>
+<p>by means of FFT2 (<span class="math notranslate nohighlight">\(Fx\)</span>) and IFFT2 (<span class="math notranslate nohighlight">\(F^tx\)</span>) functions.</p>
+<p><strong>Space invariant blur</strong></p>
+<p>We can visually describe the imaging process as:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv2.png"><img alt="../_images/deconv2.png" src="../_images/deconv2.png" style="width: 90%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv2.png"  width="700">
+  <p align="center"> 
+</p>
+<p>that can be detailed as:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv4.png"><img alt="../_images/deconv4.png" src="../_images/deconv4.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv4.png"  width="700">
+  <p align="center"> 
+</p>
+<p>In optical system the PSF represents the deformation on each pixel due to lens imperfection.</p>
+<p>We will consider in this course <em>Space Invariant PSF</em>. This means that the same PSF (convolution kernel) is applied to every pixel of the exact image.
+The final degraded image is the sum of the images obtained by applying the PSF to each pixel.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv3.png"><img alt="../_images/deconv3.png" src="../_images/deconv3.png" style="width: 100%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv3.png"  width="800">
+  <p align="center"> 
+</p>
+<p>In this case we say that the PSF is space invariant and the mathematical model is a convolution.</p>
+<p>Here you have some examples of PSFs represented as surfaces and as grayscale images:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv5.png"><img alt="../_images/deconv5.png" src="../_images/deconv5.png" style="width: 70%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv5.png"  width="700">
+  <p align="center"> 
+</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv6.png"><img alt="../_images/deconv6.png" src="../_images/deconv6.png" style="width: 70%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv6.png"  width="700">
+  <p align="center"> 
+</p><p>Examples of blurred images:</p>
+<p>a) gaussian blur</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv7.png"><img alt="../_images/deconv7.png" src="../_images/deconv7.png" style="width: 90%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv7.png"  width="700">
+  <p align="center"> 
+</p>
+<p>The  PSF kernel is given by the following discretiazion of a gaussian function:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv8.png"><img alt="../_images/deconv8.png" src="../_images/deconv8.png" style="width: 30%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv8.png"  width="200">
+  <p align="center"> 
+</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv9.png"><img alt="../_images/deconv9.png" src="../_images/deconv9.png" style="width: 30%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv9.png"  width="300">
+  <p align="center"> 
+</p>
+<p>b) motion blur</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv10.png"><img alt="../_images/deconv10.png" src="../_images/deconv10.png" style="width: 30%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv10.png"  width="300">
+  <p align="center"> 
+</p>
+<p>c) blur on color images</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv11.png"><img alt="../_images/deconv11.png" src="../_images/deconv11.png" style="width: 90%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv11.png"  width="700">
+  <p align="center"> 
+</p><p><strong>Deconvolution as an inverse problem</strong></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv13.png"><img alt="../_images/deconv13.png" src="../_images/deconv13.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv13.png"  width="500">
+  <p align="center"> 
+</p>
+<p>So the question is: given a captured image  <span class="math notranslate nohighlight">\(g(x,y)\)</span> and  a kernel <span class="math notranslate nohighlight">\(k(x,y)\)</span> is it possible to recover <span class="math notranslate nohighlight">\(f(x,y)\)</span>?</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv14.png"><img alt="../_images/deconv14.png" src="../_images/deconv14.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv14.png"  width="500">
+  <p align="center"> 
+</p>
+<p>This is the so called <em>non blind deconvolution</em> because we know <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<p><strong>How to restore <span class="math notranslate nohighlight">\(f\)</span></strong></p>
+<p>We know that the naive solution of the inverse problem is obtained to invert the linear model
+$<span class="math notranslate nohighlight">\(K*x=y^{\delta} \ \ or \ \ Ax=y^{\delta}\)</span>$</p>
+<p>by means of the least squares:</p>
+<div class="math notranslate nohighlight">
+\[min_x ||K*x-y^{\delta}||_2^2\]</div>
+<p>How to solve this problem? In deblur, the most efficient computational way is to use the Discrete  Fourier Transform.</p>
+<p>Suppose that <span class="math notranslate nohighlight">\(f'(x,y)\)</span> is the restored image. We call it <span class="math notranslate nohighlight">\(f'\)</span> and not <span class="math notranslate nohighlight">\(f\)</span> becuase it will never be perfectly reconstructed.</p>
+<p>(We call <span class="math notranslate nohighlight">\(h\)</span> the PSF kernel in the following)</p>
+<p>We start from the case of no noise.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv15.png"><img alt="../_images/deconv15.png" src="../_images/deconv15.png" style="width: 80%;" />
+</a>
+</figure>
+<div class="math notranslate nohighlight">
+\[f'(x,y)*h(x,y)=g(x,y)\]</div>
+<p align="center">
+  <img src="immagini_sorgente\deconv15.png"  width="600">
+  <p align="center"> 
+</p>
+<p>By means of the Convolution Theorem the relationship between the DFTs in the frequency space is:</p>
+<div class="math notranslate nohighlight">
+\[F'(u,v)H(u,v)=G(u,v)\]</div>
+<p>Hence to get <span class="math notranslate nohighlight">\(F'(u,v)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[F'(u,v)=\frac{G(u,v)}{H(u,v)}\]</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv17.png"><img alt="../_images/deconv17.png" src="../_images/deconv17.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv17.png"  width="600">
+  <p align="center"> 
+</p>
+<p>then by applying the IDFT we get:</p>
+<div class="math notranslate nohighlight">
+\[f'(x,y)=IDFT(F'(u,v))\]</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv18.png"><img alt="../_images/deconv18.png" src="../_images/deconv18.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv18.png"  width="600">
+  <p align="center"> 
+</p>
+<p><em>But there is a problem: NOISE</em></p>
+<p>The real acquisition model is:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv19.png"><img alt="../_images/deconv19.png" src="../_images/deconv19.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv19.png"  width="600">
+  <p align="center"> 
+</p>
+<p>Hence the deconvolution process is represented as:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv20.png"><img alt="../_images/deconv20.png" src="../_images/deconv20.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv20.png"  width="600">
+  <p align="center"> 
+</p>
+<p>By applying the Fourier transform we obtain:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv21.png"><img alt="../_images/deconv21.png" src="../_images/deconv21.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv21.png"  width="600">
+  <p align="center"> 
+</p>
+<p>where the high frequencies in <span class="math notranslate nohighlight">\(F'(u,v)\)</span> are greatly amplified.</p>
+<p>Now if you invert, i.e you compute <span class="math notranslate nohighlight">\(f'(x,y)=IDFT(F'(u,v))\)</span>, you obtain this unreliable image dominated by noise:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv22.png"><img alt="../_images/deconv22.png" src="../_images/deconv22.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv22.png"  width="600">
+  <p align="center"> 
+</p>
+<p>AS we have already seen the niave solution is noisy and unacceptable.</p>
+<p><em>Why this happens?</em></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv23.png"><img alt="../_images/deconv23.png" src="../_images/deconv23.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv23.png"  width="600">
+  <p align="center"> 
+</p>
+<ol class="arabic simple">
+<li><p>where <span class="math notranslate nohighlight">\(H(u,v)=0\)</span> <span class="math notranslate nohighlight">\(F'(u,v) = \infty\)</span>, hence <span class="math notranslate nohighlight">\(f'(x,y)\)</span> is not recoverable.</p></li>
+<li><p>the motion blur <span class="math notranslate nohighlight">\(H(u,v)\)</span> is a low-pass filter itself.</p></li>
+</ol>
+<p>For high frequencies <span class="math notranslate nohighlight">\((u,v)\)</span>, the noise in <span class="math notranslate nohighlight">\(G(u,v)\)</span> is high.</p>
+<p>WE need some noise suppression, that is obtained by means of regularization.</p>
+<p>Hence we apply model-based regularization approaches:</p>
+<div class="math notranslate nohighlight">
+\[min_{x} ||K*x-y^{\delta}||_2^2 + \lambda R(x)\]</div>
+<p>it is also possible to constraint the solution for example to be positive.</p>
+<div class="math notranslate nohighlight">
+\[min_{x \geq 0} ||K*x-y^{\delta}||_2^2 + \lambda R(x)\]</div>
+<p>For example, if we consider Tikhonov regularization:</p>
+<div class="math notranslate nohighlight">
+\[min_x ||K*x-g||_2^2 + \lambda ||x||_2^2\]</div>
+<p>if we apply the Fourier transform we have as usual:</p>
+<div class="math notranslate nohighlight">
+\[F(u,v)H(u,v)=G(u,v)\]</div>
+<p>Hence the problem becomes to find <span class="math notranslate nohighlight">\(\hat F\)</span> so that:</p>
+<div class="math notranslate nohighlight">
+\[\hat F =min |FH-G|^2+\lambda |F|^2\]</div>
+<p>and the close solution is:</p>
+<div class="math notranslate nohighlight">
+\[\hat F= \frac{H^*}{H^2+\lambda }G\]</div>
+<p>where <span class="math notranslate nohighlight">\(H^*\)</span> is the conjugate of H.</p>
+<p>We remind that the conjugate of the complex number <span class="math notranslate nohighlight">\(a+ib\)</span> is <span class="math notranslate nohighlight">\(a -ib\)</span>.</p>
+<p>If we use different regularization functions, the solution of the minimization problem:</p>
+<div class="math notranslate nohighlight">
+\[min_x ||K*x -y^{\delta}||_2^2 + \lambda R(x)\]</div>
+<p>is obtained by means of the iterative optimization methods that we have seen in the last lesson.</p>
+<p>Remind that any time we need to perform the matrix-vector multiplication <span class="math notranslate nohighlight">\(Av\)</span> or <span class="math notranslate nohighlight">\(A^Tw\)</span> we do it in the Fourier space since this is a convolution in deblur.</p>
+<p><strong>Blind deconvolution</strong></p>
+<p>We have considered, up to now, of knowing the PSF, i.e. the blurring kernel.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv25.png"><img alt="../_images/deconv25.png" src="../_images/deconv25.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv25.png"  width="600">
+  <p align="center"> 
+</p>
+<p>But in some real cases the PSF is not  known. In this case we call it   <em>blind deconvolution</em>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/deconv26.png"><img alt="../_images/deconv26.png" src="../_images/deconv26.png" style="width: 80%;" />
+</a>
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\deconv26.png"  width="600">
+  <p align="center"> 
+</p>
+<p>We must recover both the kernel and the reconstructed image. The task is much more difficult and the model-based approach has not given satisfactory results. Today this task is approached by means of neural networks and the results are far better.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pills-optimization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pills of numerical optimization</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elena Loli Piccolomini
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
