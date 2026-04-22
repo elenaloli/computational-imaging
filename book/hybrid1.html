@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hybrid methods: from Model Based to Neural Networks &#8212; Computational Imaging 2025-26 Module I</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/hybrid1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Homework 1- Model based reconstructions" href="hm1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/compim.png" class="logo__image only-light" alt="Computational Imaging 2025-26 Module I - Home"/>
+    <script>document.write(`<img src="../_static/compim.png" class="logo__image only-dark" alt="Computational Imaging 2025-26 Module I - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Computational Imaging - part I
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixel_processing.html">Image processing Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conv_filters.html">Image filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fourier.html">The Discrete Fourier Transform and its use in image procressing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compimag.html">Computational imaging and inverse problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-based.html">The model-based regularization approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pills-optimization.html">Pills of numerical optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deblur.html">Image deblur (or Image Deconvolution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="super_resolution.html">Super resolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">Evaluation of output images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hm1.html">Homework 1- Model based reconstructions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hybrid methods: from Model Based  to Neural Networks</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/hybrid1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/hybrid1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hybrid methods: from Model Based  to Neural Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="hybrid-methods-from-model-based-to-neural-networks">
+<h1>Hybrid methods: from Model Based  to Neural Networks<a class="headerlink" href="#hybrid-methods-from-model-based-to-neural-networks" title="Link to this heading">#</a></h1>
+<p align="center">
+  <img src="immagini_sorgente\hybrid0.png"  width="600">
+</p>
+<p><strong>Model Based approach</strong></p>
+<ul class="simple">
+<li><p>(+) Take account of the physical (or statistical )model and can incorporate
+physical (or statistical) priors</p></li>
+<li><p>(+)  Explainability of the results</p></li>
+<li><p>(-) Choice of the regularization function and regularization parameter</p></li>
+<li><p>(-)  Long execution time</p></li>
+</ul>
+<p><strong>FRom Model based to data driven</strong></p>
+<ul class="simple">
+<li><p>Speed and Efficiency</p>
+<ul>
+<li><p>MBIR involves iterative updates, which can be computationally expensive.</p></li>
+<li><p>Neural networks, once trained, can perform reconstructions in real time, significantly reducing processing times.</p></li>
+</ul>
+</li>
+<li><p>Data-Driven Learning</p>
+<ul>
+<li><p>MBIR depends on handcrafted priors and explicit regularization.</p></li>
+<li><p>Neural networks can automatically learn priors from large datasets, capturing complex image features without manual tuning.</p></li>
+</ul>
+</li>
+<li><p>Robustness to Noise</p>
+<ul>
+<li><p>MBIR incorporates statistical noise models, but these may not generalize well across different imaging conditions.</p></li>
+<li><p>Deep learning models can be trained to handle diverse noise patterns, improving robustness.</p></li>
+</ul>
+</li>
+<li><p>End-to-End Optimization</p>
+<ul>
+<li><p>MBIR requires solving multiple steps sequentially (forward model, regularization, optimization).</p></li>
+<li><p>Neural networks can be trained in an end-to-end fashion, directly mapping raw data to high-quality reconstructions.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Data driven methods</strong></p>
+<ul class="simple">
+<li><p>(+)  Fast execution after training, the execution is real time</p></li>
+<li><p>(+) high quality reconstruction since the information is obtained from multiple data</p></li>
+<li><p>(-) Data Dependency: Large, high-quality datasets are required for training.</p></li>
+<li><p>(-) Generalization: Neural networks may not always generalize well to unseen data (instability)</p></li>
+<li><p>(-) Interpretability: MBIR methods offer explicit mathematical formulations, whereas deep learning models often function as black boxes.</p></li>
+</ul>
+<p><strong>Examples of hybrid methods</strong></p>
+<ul class="simple">
+<li><p><em>Plug and Play</em>  - Neural networks learning the denoiser</p></li>
+<li><p><em>Bilevel methods</em> - neural networks learn the regularizer</p></li>
+<li><p><em>Unrolled methods</em>- neural networks learns the parameters of the model (such as    the regularization parameter) of the parameters of the optimization algorithm</p></li>
+<li><p><em>Learned Post processing  (LPP)</em>- the neural network is used as a post processing of an MBIR method</p></li>
+<li><p><em>Other hybrid methods</em> – The neural networks learns some iterations of the iterative method (RISING), the initial guess of an iterative method for non convex minimization, … in general the neural networks are used in the most critical steps of an MBIR approach.</p></li>
+</ul>
+<p><strong>The Plug and Play approach</strong></p>
+<ul class="simple">
+<li><p>The Plug and Play (PnP) framework incorporates advanced prior models.</p></li>
+<li><p>It’s fundamental goal is to fuse the model based apporach with action based models, such as Deep NN (DNN) that are dsigned to generate output from input.</p></li>
+<li><p>In the PnP prior the prior model is replaced by a general class of denoising operators that can be efficiently Implemented by DNNs.</p></li>
+</ul>
+<p>(Kamilov, Ulugbek S., et al. “Plug-and-play methods for integrating physical and learned models in computational imaging: Theory, algorithms, and applications.” IEEE Signal Processing Magazine 40.1 (2023): 85-97.)</p>
+<p>The idea is to decouple the forward model (the physics of the measurement)
+from the prior (the model of the image):</p>
+<div class="math notranslate nohighlight">
+\[min \|Ax-y^{\delta}\|_2^2+\lambda R(x)\]</div>
+<p>Where the least squares part represents the fidelity term with the data and <span class="math notranslate nohighlight">\(R(x)\)</span> is the regularization term, <span class="math notranslate nohighlight">\(\lambda\)</span> is a trade off parameter.</p>
+<p>The fidelity term guarantees the solution accords with the degradation process, while the regularization term enforces desired properties of the output.</p>
+<p>Generally, the methods to solve the minimization problem  can be divided
+into two main categories, i.e., model-based optimization methods and discriminative learning methods.</p>
+<p>The model-based optimization methods aim to directly solve the minimization problem with  some optimization algorithms which usually involve a time-consuming iterative inference.
+On the contrary, discriminative learning methods try to learn the prior parameters and a compact
+inference through an optimization of a loss function on a training set containing degraded-clean
+image pairs.</p>
+<p>It can be seen that one obvious difference between model-based optimization method and discriminative learning method is that, the former is flexible to handle various IR tasks by specifying degradation matrix H, whereas the latter needs to use the training data with certain
+degradation matrices to learn the model.</p>
+<p>As a consequence, different from model-based optimization methods which have flexibility to handle different image restoration tasks, discriminative learning methods are usually restricted by specialized tasks.</p>
+<p>With the sacrifice of flexibility, however, discriminative learning methods can not only enjoy a
+fast testing speed but also tend to deliver promising performance due to the joint optimization
+and end-to-end training.</p>
+<p>On the contrary, model-based optimization methods are usually time consuming
+with sophisticated priors for the purpose of good performance.</p>
+<p>As a result, those two kinds of methods have their respective merits and drawbacks, and thus it would be attractive to investigate their integration which leverages their respective merits.</p>
+<p>Fortunately, with the aid of variable splitting techniques, such as alternating direction method of multipliers (ADMM) method and half quadratic
+splitting (HQS) method , it is possible to deal with fidelity term and regularization term separately ,
+and particularly, the regularization term only corresponds to a denoising subproblem.</p>
+<p align="center">
+  <img src="immagini_sorgente\hybrid4.png"  width="800">
+</p>
+<p><strong>The Half Quadratic Splitting (HQS) algorithm</strong></p>
+<p>Conoder the previous model:</p>
+<div class="math notranslate nohighlight">
+\[min \|Ax-y^{\delta}\|_2^2+\lambda R(x)\]</div>
+<p>By introducing an auxiliary variable z, the Half Quadratic Splitting (HQS) method tries to solve the constrained problem:</p>
+<div class="math notranslate nohighlight">
+\[ min \frac{1}{2} \|Ax-y^{\delta}\|_2^2 + \lambda R(z), \ \ s.t. \ \  z=x\]</div>
+<p>This is equivalent to solve:</p>
+<div class="math notranslate nohighlight">
+\[ min  \frac{1}{2} \|Ax-y^{\delta}\|_2^2 +\lambda R(x)-\frac{\mu}{2} \|z-x\|_2^2 \]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is a penalty parameter.</p>
+<p>The minimization problem is solved by means of the following splitting scheme:</p>
+<div class="math notranslate nohighlight">
+\[x_{k+1}= min_x \|Ax-y^{\delta}\|_2^2+ \mu \|x-z_k\|_2^2\]</div>
+<div class="math notranslate nohighlight">
+\[ z_{k+1}=min_z \frac{\mu}{2} \|z-x_{k+1}\|_2^2+\lambda R(z)\]</div>
+<p>Where the fidelity and the regularization term are decoupled into two different equations.</p>
+<p>The first equation is a Tikhonov regularization problem can be solved with a suitable method.
+The second equation represents the denoising of the image  <span class="math notranslate nohighlight">\(x_{k+1}\)</span>.  A <em>denoiser</em> can be plugged in.</p>
+<p><em>Algorithm</em></p>
+<p>for k=1,2,..</p>
+<p><span class="math notranslate nohighlight">\( \ \  z_{k+1}=D^{CNN}(x_k)\)</span></p>
+<p><span class="math notranslate nohighlight">\( \ \  x_{k+1}=argmin_x \|Ax-y^{\delta}\|_2^2+\mu \|x-z_{k+1}\|_2^2\)</span></p>
+<p>end for</p>
+<p>The denoiser <span class="math notranslate nohighlight">\(D^{CNN}\)</span> can be implemented by a neural network.<br />
+The neural network can be for example a Residual Unet that is trained from low dose
+noisy sinograms to ground truth.</p>
+<p>It is also possible to set up neural networks acting on the gradient <span class="math notranslate nohighlight">\(D\)</span> of the image:</p>
+<div class="math notranslate nohighlight">
+\[min \frac{1}{2} \|Ax-y^{\delta}\|_2^2+\lambda R(Dx)\]</div>
+<p>The HQS method in this case reads as:</p>
+<div class="math notranslate nohighlight">
+\[x_{k+1}= argmin_x \|Ax-y^{\delta}\|_2^2+ \mu \|Dx-z_k\|_2^2\]</div>
+<div class="math notranslate nohighlight">
+\[ z_{k+1}=argmin_z \frac{\mu}{2} \|z-Dx_{k+1}\|_2^2+\lambda R(z)\]</div>
+<p>Now the first equation represents the denoising of Dx, i.e. the image of the gradient of x.</p>
+<p>Hence it is possible to plug in a neural network acting as a denoiser on the gradients.
+A ResUnet can be used, for example with a final layer exctrating the gradients from the output image. Or trained directly on the image gradients starting from the noisy sinograms. More details will be given in the next lessons.</p>
+<p><em>Algorithm</em></p>
+<p>for k=1,2,..</p>
+<p><span class="math notranslate nohighlight">\( \ \  z_{k+1}=D^{CNN}(Dx_k)\)</span></p>
+<p><span class="math notranslate nohighlight">\( \ \  x_{k+1}=argmin_x \|Ax-y^{\delta}\|_2^2+\mu \|Dx-z_{k+1}\|_2^2\)</span></p>
+<p>end for</p>
+<p align="center">
+  <img src="immagini_sorgente\hybrid.png"  width="800">
+</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hm1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 1- Model based reconstructions</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elena Loli Piccolomini
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
