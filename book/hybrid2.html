@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hybrid methods: Plug and Play &#8212; Computational Imaging 2025-26 Module I</title>
+    <title>Hybrid methods: unrolling algorithms &#8212; Computational Imaging 2025-26 Module I</title>
   
   
   
@@ -59,11 +59,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/hybrid1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/hybrid2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hybrid methods: unrolling algorithms" href="hybrid2.html" />
-    <link rel="prev" title="Homework 1- Model based reconstructions" href="hm1.html" />
+    <link rel="prev" title="Hybrid methods: Plug and Play" href="hybrid1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,8 +192,8 @@
 <li class="toctree-l1"><a class="reference internal" href="super_resolution.html">Super resolution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Evaluation of output images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hm1.html">Homework 1- Model based reconstructions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hybrid methods: Plug and Play</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid2.html">Hybrid methods: unrolling algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid1.html">Hybrid methods: Plug and Play</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hybrid methods: unrolling algorithms</a></li>
 </ul>
 
     </div>
@@ -266,7 +265,7 @@
       
       
       
-      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/hybrid1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/hybrid2.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +295,7 @@
       
       
       
-      <li><a href="../_sources/book/hybrid1.ipynb" target="_blank"
+      <li><a href="../_sources/book/hybrid2.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Hybrid methods: Plug and Play</h1>
+    <h1>Hybrid methods: unrolling algorithms</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -392,154 +391,221 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="hybrid-methods-plug-and-play">
-<h1>Hybrid methods: Plug and Play<a class="headerlink" href="#hybrid-methods-plug-and-play" title="Link to this heading">#</a></h1>
-<p align="center">
-  <img src="immagini_sorgente\hybrid0.png"  width="800">
-</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/hybrid0.png"><img alt="../_images/hybrid0.png" src="../_images/hybrid0.png" style="width: 80%;" />
-</a>
-</figure>
-<p><strong>Model Based approach</strong></p>
+  <section id="hybrid-methods-unrolling-algorithms">
+<h1>Hybrid methods: unrolling algorithms<a class="headerlink" href="#hybrid-methods-unrolling-algorithms" title="Link to this heading">#</a></h1>
+<p>In simple terms, unrolling consists of transforming a traditional iterative optimization algorithm into a deep neural network, where each iteration corresponds to one layer of the network.</p>
+<p>The idea: <em>Learn to optimize!</em></p>
 <ul class="simple">
-<li><p>(+) Take account of the physical (or statistical )model and can incorporate
-physical (or statistical) priors</p></li>
-<li><p>(+)  Explainability of the results</p></li>
-<li><p>(-) Choice of the regularization function and regularization parameter</p></li>
-<li><p>(-)  Long execution time</p></li>
+<li><p>Unrolling builds a trainable supervised network that mimics the optimization process but is:</p></li>
+<li><p>much faster,</p></li>
+<li><p>adapted to the specific data distribution,</p></li>
+<li><p>capable of implicitly learning more powerful priors.</p></li>
 </ul>
-<p><strong>FRom Model based to data driven</strong></p>
-<ul class="simple">
-<li><p>Speed and Efficiency</p>
-<ul>
-<li><p>MBIR involves iterative updates, which can be computationally expensive.</p></li>
-<li><p>Neural networks, once trained, can perform reconstructions in real time, significantly reducing processing times.</p></li>
-</ul>
-</li>
-<li><p>Data-Driven Learning</p>
-<ul>
-<li><p>MBIR depends on handcrafted priors and explicit regularization.</p></li>
-<li><p>Neural networks can automatically learn priors from large datasets, capturing complex image features without manual tuning.</p></li>
-</ul>
-</li>
-<li><p>Robustness to Noise</p>
-<ul>
-<li><p>MBIR incorporates statistical noise models, but these may not generalize well across different imaging conditions.</p></li>
-<li><p>Deep learning models can be trained to handle diverse noise patterns, improving robustness.</p></li>
-</ul>
-</li>
-<li><p>End-to-End Optimization</p>
-<ul>
-<li><p>MBIR requires solving multiple steps sequentially (forward model, regularization, optimization).</p></li>
-<li><p>Neural networks can be trained in an end-to-end fashion, directly mapping raw data to high-quality reconstructions.</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Data driven methods</strong></p>
-<ul class="simple">
-<li><p>(+)  Fast execution after training, the execution is real time</p></li>
-<li><p>(+) high quality reconstruction since the information is obtained from multiple data</p></li>
-<li><p>(-) Data Dependency: Large, high-quality datasets are required for training.</p></li>
-<li><p>(-) Generalization: Neural networks may not always generalize well to unseen data (instability)</p></li>
-<li><p>(-) Interpretability: MBIR methods offer explicit mathematical formulations, whereas deep learning models often function as black boxes.</p></li>
-</ul>
-<p><strong>Examples of hybrid methods</strong></p>
-<ul class="simple">
-<li><p><em>Plug and Play</em>  - Neural networks learning the denoiser</p></li>
-<li><p><em>Bilevel methods</em> - neural networks learn the regularizer</p></li>
-<li><p><em>Unrolled methods</em>- neural networks learns the parameters of the model (such as    the regularization parameter) of the parameters of the optimization algorithm</p></li>
-<li><p><em>Learned Post processing  (LPP)</em>- the neural network is used as a post processing of an MBIR method</p></li>
-<li><p><em>Other hybrid methods</em> – The neural networks learns some iterations of the iterative method (RISING), the initial guess of an iterative method for non convex minimization, … in general the neural networks are used in the most critical steps of an MBIR approach.</p></li>
-</ul>
-<p><strong>The Plug and Play approach</strong></p>
-<ul class="simple">
-<li><p>The Plug and Play (PnP) framework incorporates advanced prior models.</p></li>
-<li><p>It’s fundamental goal is to fuse the model based apporach with action based models, such as Deep NN (DNN) that are dsigned to generate output from input.</p></li>
-<li><p>In the PnP prior the prior model is replaced by a general class of denoising operators that can be efficiently Implemented by DNNs.</p></li>
-</ul>
-<p>(Kamilov, Ulugbek S., et al. “Plug-and-play methods for integrating physical and learned models in computational imaging: Theory, algorithms, and applications.” IEEE Signal Processing Magazine 40.1 (2023): 85-97.)</p>
-<p>The idea is to decouple the forward model (the physics of the measurement)
-from the prior (the model of the image):</p>
+<p><em>How unrolling works?</em></p>
+<p>Example: Unrolling the gradient descent to solve <span class="math notranslate nohighlight">\( min_x f(x)=\|Ax-y^{\delta}+ \lambda R(x)\)</span> and learn the regularization parameter <span class="math notranslate nohighlight">\(\lambda\)</span>. This is the simplest possible case where only a single parameter must be learned by the network.</p>
+<p>At each iteration k, the gradient descent updates the solution as:</p>
 <div class="math notranslate nohighlight">
-\[min \|Ax-y^{\delta}\|_2^2+\lambda R(x)\]</div>
-<p>Where the least squares part represents the fidelity term with the data and <span class="math notranslate nohighlight">\(R(x)\)</span> is the regularization term, <span class="math notranslate nohighlight">\(\lambda\)</span> is a trade off parameter.</p>
-<p>The fidelity term guarantees the solution accords with the degradation process, while the regularization term enforces desired properties of the output.</p>
-<p>Generally, the methods to solve the minimization problem  can be divided
-into two main categories, i.e., model-based optimization methods and discriminative learning methods.</p>
-<p>The model-based optimization methods aim to directly solve the minimization problem with  some optimization algorithms which usually involve a time-consuming iterative inference.
-On the contrary, discriminative learning methods try to learn the prior parameters and a compact
-inference through an optimization of a loss function on a training set containing degraded-clean
-image pairs.</p>
-<p>It can be seen that one obvious difference between model-based optimization method and discriminative learning method is that, the former is flexible to handle various IR tasks by specifying degradation matrix H, whereas the latter needs to use the training data with certain
-degradation matrices to learn the model.</p>
-<p>As a consequence, different from model-based optimization methods which have flexibility to handle different image restoration tasks, discriminative learning methods are usually restricted by specialized tasks.</p>
-<p>With the sacrifice of flexibility, however, discriminative learning methods can not only enjoy a
-fast testing speed but also tend to deliver promising performance due to the joint optimization
-and end-to-end training.</p>
-<p>On the contrary, model-based optimization methods are usually time consuming
-with sophisticated priors for the purpose of good performance.</p>
-<p>As a result, those two kinds of methods have their respective merits and drawbacks, and thus it would be attractive to investigate their integration which leverages their respective merits.</p>
-<p>Fortunately, with the aid of variable splitting techniques, such as alternating direction method of multipliers (ADMM) method and half quadratic
-splitting (HQS) method , it is possible to deal with fidelity term and regularization term separately ,
-and particularly, the regularization term only corresponds to a denoising subproblem.</p>
+\[ x_{k+1}=x_k - \eta_k \nabla f(x_k) \]</div>
+<p>In unrolling, we reinterpret each iteration of gradient descent as a layer in a deep neural network.
+Instead of manually choosing the parameters, such as the regularization parameter or the step size <span class="math notranslate nohighlight">\(\eta_k\)</span>  we learn them (and possibly other parameters) directly from data.</p>
+<p>Basic unrolled form:</p>
+<ul class="simple">
+<li><p>Each update step becomes a trainable operation.</p></li>
+<li><p>The number of iterations (or layers) is fixed during training.</p></li>
+<li><p>Parameters such as step sizes or regularization parameters​ can be learned.
+The loss function is of the form:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \mathcal L (\lambda, \eta_k)= ||x_x(\lambda, \eta_k)-x_GT||_2^2\]</div>
+<p>It is also possible to set a different regularization parameter <span class="math notranslate nohighlight">\(\lambda_k\)</span> for each iteration <span class="math notranslate nohighlight">\(k\)</span>. In this case it is possible to set a larger regularization parameter in the first iterations and a smaller one in the last iterations.</p>
+<p>During training, the gradient is computed with respect to the learnable parameters by means of backpropagation algorithm.</p>
+<p>Framework of an unrolled network:</p>
+<ol class="arabic">
+<li><p>Choose a fixed number of iterations, say T.</p></li>
+<li><p>Build a sequence of T updates, each corresponding to one layer:</p>
+<ul class="simple">
+<li><p>Forward pass: simulate gradient descent over T steps.</p></li>
+<li><p>Backward pass: compute gradients with respect to parameters (like step sizes, or learned modifications).</p></li>
+</ul>
+</li>
+<li><p>Train the parameters (step sizes or learned operators) using supervision:</p>
+<ul class="simple">
+<li><p>Input: corrupted or incomplete measurements.</p></li>
+<li><p>Target: ground truth clean images or signals.</p></li>
+</ul>
+<p>Summarizing:</p>
+<ul class="simple">
+<li><p>Each layer correspond to an iteration of the optimization algorithm.</p></li>
+<li><p>The network depth is the number of unrolled steps.</p></li>
+<li><p>parameters (such as the step size or the regularization parameter) are learned during the training to improve reconstruction quality.</p></li>
+</ul>
+</li>
+</ol>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/hybrid4.png"><img alt="../_images/hybrid4.png" src="../_images/hybrid4.png" style="width: 90%;" />
+<a class="reference internal image-reference" href="../_images/hybrid5.png"><img alt="../_images/hybrid5.png" src="../_images/hybrid5.png" style="width: 110%;" />
 </a>
 </figure>
 <p align="center">
-  <img src="immagini_sorgente\hybrid4.png"  width="800">
-</p>
-<p><strong>The Half Quadratic Splitting (HQS) algorithm</strong></p>
-<p>Conoder the previous model:</p>
+  <img src="immagini_sorgente\hybrid5.png"  width="800">
+</p><p><strong>here you have an example of a Pytorch function for unrolling the gradient descent methods and learning the parameters <span class="math notranslate nohighlight">\((\alpha_k, \lambda_k)\)</span>.</strong></p>
+<p>#per ogni iterazione impara sia lambda_k che alpha_k (quindi 2k parametri)</p>
+<p>class UnrolledTikhonovGD_LearnAlphaLambda(nn.Module):
+def <strong>init</strong>(self, A, AT, K):
+“””
+A, AT : callable
+Operatore forward e aggiunto.
+K : int
+Numero di iterazioni/layer.
+“””
+super().<strong>init</strong>()</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    self.A = A
+    self.AT = AT
+    self.K = K
+
+    # Un parametro lambda_k per ogni iterazione
+    self.raw_lambda = nn.Parameter(torch.zeros(K))
+
+    # Un parametro alpha_k per ogni iterazione
+    self.raw_alpha = nn.Parameter(torch.full((K,), -4.0))
+
+def get_lambdas(self):
+    # lambda_k &gt; 0
+    return F.softplus(self.raw_lambda)
+
+def get_alphas(self):
+    # alpha_k &gt; 0
+    return F.softplus(self.raw_alpha)
+
+def forward(self, y, x0=None):
+    &quot;&quot;&quot;
+    y : tensor
+        Dati osservati.
+    x0 : tensor, optional
+        Inizializzazione. Se None usa AT(y).
+    &quot;&quot;&quot;
+
+    if x0 is None:
+        x = self.AT(y)
+    else:
+        x = x0
+
+    lambdas = self.get_lambdas()
+    alphas = self.get_alphas()
+
+    for k in range(self.K):
+        lam_k = lambdas[k]
+        alpha_k = alphas[k]
+
+        grad_data = self.AT(self.A(x) - y)
+        grad_reg = lam_k * x
+
+        x = x - alpha_k * (grad_data + grad_reg)
+
+    return x
+</pre></div>
+</div>
+<p>A further complexity is introduced for example in the papers:</p>
+<ul class="simple">
+<li><p>Corbineau, M-C., et al. “Learned image deblurring by unfolding a proximal interior point algorithm.” 2019 IEEE International Conference on Image Processing (ICIP). IEEE, 2019.</p></li>
+</ul>
+<p>In this case the algorithm is applued to deblurring.</p>
+<p>Prato Marco, et al. “CTprintNet: an accurate and stable deep unfolding approach for few-view CT reconstruction.” Algorithms 16.6 (2023): 270.</p>
+<p>In this case the algorithm is applied to CT.</p>
+<p>The starting formulation is the classical Total Variation regularization:</p>
 <div class="math notranslate nohighlight">
-\[min \|Ax-y^{\delta}\|_2^2+\lambda R(x)\]</div>
-<p>By introducing an auxiliary variable z, the Half Quadratic Splitting (HQS) method tries to solve the constrained problem:</p>
+\[ min_x ||Ax - y^{\delta}||_2^2 + \lambda TV(x) \]</div>
+<p>solved by an iterative algorithm called <em>proximal interior method</em> where the update at the iteration <span class="math notranslate nohighlight">\(k\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
-\[ min \frac{1}{2} \|Ax-y^{\delta}\|_2^2 + \lambda R(z), \ \ s.t. \ \  z=x\]</div>
-<p>This is equivalent to solve:</p>
-<div class="math notranslate nohighlight">
-\[ min  \frac{1}{2} \|Ax-y^{\delta}\|_2^2 +\lambda R(x)-\frac{\mu}{2} \|z-x\|_2^2 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is a penalty parameter.</p>
-<p>The minimization problem is solved by means of the following splitting scheme:</p>
-<div class="math notranslate nohighlight">
-\[x_{k+1}= min_x \|Ax-y^{\delta}\|_2^2+ \mu \|x-z_k\|_2^2\]</div>
-<div class="math notranslate nohighlight">
-\[ z_{k+1}=min_z \frac{\mu}{2} \|z-x_{k+1}\|_2^2+\lambda R(z)\]</div>
-<p>Where the fidelity and the regularization term are decoupled into two different equations.</p>
-<p>The first equation is a Tikhonov regularization problem can be solved with a suitable method.
-The second equation represents the denoising of the image  <span class="math notranslate nohighlight">\(x_{k+1}\)</span>.  A <em>denoiser</em> can be plugged in.</p>
-<p><em>Algorithm</em></p>
-<p>for k=1,2,..</p>
-<p><span class="math notranslate nohighlight">\( \ \  z_{k+1}=D^{CNN}(x_k)\)</span></p>
-<p><span class="math notranslate nohighlight">\( \ \  x_{k+1}=argmin_x \|Ax-y^{\delta}\|_2^2+\mu \|x-z_{k+1}\|_2^2\)</span></p>
-<p>end for</p>
-<p>The denoiser <span class="math notranslate nohighlight">\(D^{CNN}\)</span> can be implemented by a neural network.<br />
-The neural network can be for example a Residual Unet that is trained from low dose
-noisy sinograms to ground truth.</p>
-<p>It is also possible to set up neural networks acting on the gradient <span class="math notranslate nohighlight">\(D\)</span> of the image:</p>
-<div class="math notranslate nohighlight">
-\[min \frac{1}{2} \|Ax-y^{\delta}\|_2^2+\lambda R(Dx)\]</div>
-<p>The HQS method in this case reads as:</p>
-<div class="math notranslate nohighlight">
-\[x_{k+1}= argmin_x \|Ax-y^{\delta}\|_2^2+ \mu \|Dx-z_k\|_2^2\]</div>
-<div class="math notranslate nohighlight">
-\[ z_{k+1}=argmin_z \frac{\mu}{2} \|z-Dx_{k+1}\|_2^2+\lambda R(z)\]</div>
-<p>Now the first equation represents the denoising of Dx, i.e. the image of the gradient of x.</p>
-<p>Hence it is possible to plug in a neural network acting as a denoiser on the gradients.
-A ResUnet can be used, for example with a final layer exctrating the gradients from the output image. Or trained directly on the image gradients starting from the noisy sinograms. More details will be given in the next lessons.</p>
-<p><em>Algorithm</em></p>
-<p>for k=1,2,..</p>
-<p><span class="math notranslate nohighlight">\( \ \  z_{k+1}=D^{CNN}(Dx_k)\)</span></p>
-<p><span class="math notranslate nohighlight">\( \ \  x_{k+1}=argmin_x \|Ax-y^{\delta}\|_2^2+\mu \|Dx-z_{k+1}\|_2^2\)</span></p>
-<p>end for</p>
+\[x_{k+1}= prox_{\mu_k,\gamma_k}(x_k - \gamma_k \nabla(||Ax - y^{\delta}||_2^2)+\lambda_k TV(x))\]</div>
+<p>In this case the parameters  to be learned are <span class="math notranslate nohighlight">\((\lambda_k, \gamma_k, \mu_k)\)</span>.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../_images/hybrid.png"><img alt="../_images/hybrid.png" src="../_images/hybrid.png" style="width: 110%;" />
+<a class="reference internal image-reference" href="../_images/hybrid6.png"><img alt="../_images/hybrid6.png" src="../_images/hybrid6.png" style="width: 80%;" />
 </a>
 </figure>
 <p align="center">
-  <img src="immagini_sorgente\hybrid.png"  width="800">
+  <img src="immagini_sorgente\hybrid6.png"  width="800">
 </p>
+<figure class="align-default">
+<img alt="../_images/hybrid7.png" src="../_images/hybrid7.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid7.png"  width="400">
+</p>
+<p>More advanced algorithms learn the regularization function <span class="math notranslate nohighlight">\(R(x)\)</span>, by supposing that it depends on a set of parameters <span class="math notranslate nohighlight">\(\theta\)</span> learned by the neural network, <span class="math notranslate nohighlight">\(R_{\theta}(x)\)</span>, such as in the paper :</p>
+<p>Adler, Jonas, and Ozan Öktem. “Learned primal-dual reconstruction.” IEEE transactions on medical imaging 37.6 (2018): 1322-1332.</p>
+<p><em>ADvantages of unrolling algorithms</em></p>
+<ol class="arabic simple">
+<li><p>Interpretable Architecture</p>
+<ul class="simple">
+<li><p>Each layer corresponds to one iteration of a known optimization algorithm
+(e.g., gradient descent, ISTA, ADMM).</p></li>
+<li><p>Clear meaning for each operation: e.g., gradient computation, regularization update.</p></li>
+<li><p>It’s easier to analyze, debug, and understand compared to black-box deep networks.</p></li>
+</ul>
+</li>
+<li><p>Better generalization</p>
+<ul class="simple">
+<li><p>Because the architecture is based on physics or optimization principles, it often generalizes better than purely learned methods.</p></li>
+<li><p>Especially powerful when training data is limited.</p></li>
+</ul>
+</li>
+<li><p>Efficiency</p>
+<ul class="simple">
+<li><p>Standard iterative methods might require hundreds of iterations to converge.</p></li>
+<li><p>An unrolled network can learn optimal parameters (step sizes, regularization strengths) and solve the problem in very few steps (e.g., 5–20 unrolled iterations).</p></li>
+</ul>
+</li>
+<li><p>Learnable regularization</p>
+<ul class="simple">
+<li><p>Instead of manually tuning hyperparameters like <span class="math notranslate nohighlight">\(\lambda\)</span> or designing regularizers <span class="math notranslate nohighlight">\(R(x)\)</span>, the network can learn them from data.</p></li>
+<li><p>This adapts the method to real noise, artifacts, or prior information not captured analytically.</p></li>
+<li><p>instead of manually</p></li>
+</ul>
+</li>
+<li><p>Flexibility</p>
+<ul class="simple">
+<li><p>You can unroll different algorithms: gradient descent, Half-Quadratic Splitting, Plug-and-Play denoisers, etc.</p></li>
+<li><p>Easy to incorporate learned denoisers, learned proximal maps, or even attention modules inside unrolled steps.</p></li>
+<li></li>
+</ul>
+</li>
+<li><p>Fewer parameters</p>
+<ul class="simple">
+<li><p>Unrolled networks often have much fewer parameters than deep CNNs.</p></li>
+<li><p>If you share weights across layers, it makes the network very compact and lightweight.</p></li>
+</ul>
+</li>
+</ol>
+<p><em>Disadvantages ofunrolling algorithms</em></p>
+<ol class="arabic simple">
+<li><p>Limited number of iterations</p>
+<ul class="simple">
+<li><p>Unrolled networks are typically truncated (e.g., 5–20 steps).</p></li>
+<li><p>This may cause loss of accuracy compared to the full optimization algorithm, especially for very ill-posedproblems.</p></li>
+<li><p>I f you need higher precision, you would need more layers, which increases computational cost.</p></li>
+</ul>
+</li>
+<li><p>Fixed depth</p>
+<ul class="simple">
+<li><p>The number of iterations is fixed after training.</p></li>
+<li><p>If a test example needs more iterations (e.g., noisier measurements), the model cannot dynamically adapt.</p></li>
+<li><p>In contrast, classical algorithms can run until convergence.</p></li>
+</ul>
+</li>
+<li><p>Overfitting to training distributions</p>
+<ul class="simple">
+<li><p>If the training data (e.g., noise levels, artifacts) doesn’t match the test conditions, performance can degrade.</p></li>
+<li><p>Learned parameters like step sizes and regularization strengths are optimized for the training distribution.</p></li>
+</ul>
+</li>
+<li><p>Loss of theoretical guarantees</p>
+<ul class="simple">
+<li><p>Traditional optimization methods have strong convergence guarantees under certain conditions (e.g., convexity).</p></li>
+<li><p>Unrolled versions break strict theoretical guarantees because the parameters (e.g., step sizes, <span class="math notranslate nohighlight">\(\lambda\)</span>) are learned, not analytically chosen.
+Sometimes the network behaves unpredictably outside the training domain.</p></li>
+</ul>
+</li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -573,22 +639,13 @@ A ResUnet can be used, for example with a final layer exctrating the gradients f
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hm1.html"
+       href="hybrid1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Homework 1- Model based reconstructions</p>
+        <p class="prev-next-title">Hybrid methods: Plug and Play</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="hybrid2.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Hybrid methods: unrolling algorithms</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
