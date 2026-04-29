@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Other hybrid methods &#8212; Computational Imaging 2025-26 Module I</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/hybrid3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Hybrid methods: unrolling algorithms" href="hybrid2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/compim.png" class="logo__image only-light" alt="Computational Imaging 2025-26 Module I - Home"/>
+    <script>document.write(`<img src="../_static/compim.png" class="logo__image only-dark" alt="Computational Imaging 2025-26 Module I - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Computational Imaging - part I
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro_ci_improc.html">Image processing, Computer Vision and Computer Graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixel_processing.html">Image processing Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conv_filters.html">Image filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fourier.html">The Discrete Fourier Transform and its use in image procressing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compimag.html">Computational imaging and inverse problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-based.html">The model-based regularization approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pills-optimization.html">Pills of numerical optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deblur.html">Image deblur (or Image Deconvolution)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="super_resolution.html">Super resolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">Evaluation of output images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hm1.html">Homework 1- Model based reconstructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid1.html">Hybrid methods: Plug and Play</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid2.html">Hybrid methods: unrolling algorithms</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Other hybrid methods</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/elenaloli/computational-imaging.git/issues/new?title=Issue%20on%20page%20%2Fbook/hybrid3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/hybrid3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Other hybrid methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="other-hybrid-methods">
+<h1>Other hybrid methods<a class="headerlink" href="#other-hybrid-methods" title="Link to this heading">#</a></h1>
+<p><strong>RISING for sparse-view or limited angle tomography</strong></p>
+<p>(in the paper: Evangelista, Davide, Elena Morotti, and Elena Loli Piccolomini. “RISING: A new framework for model-based few-view CT image reconstruction with deep learning.” Computerized Medical Imaging and Graphics 103 (2023): 102156.)</p>
+<p>In sparse-view (or limited angle) CT a coarse but fast reconstruction obtained by means of Filtered Back-Projection followed by a neural network, typically a UNet, trained on the ground truth images to remove noise and artifacts.</p>
+<figure class="align-default">
+<img alt="../_images/hybrid8.png" src="../_images/hybrid8.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid8.png"  width="400">
+</p>
+<p>Since it is quite difficult to have ground truth datasets in CT  (and in medical imaging in general), we can create our own target dataset by reconstructiong the sinogram with many iterations of an MBIR method with suitable parameters. This leads to the so called “RISING” framework:</p>
+<figure class="align-default">
+<img alt="../_images/hybrid9.png" src="../_images/hybrid9.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid9.png"  width="400">
+</p>
+<p>The difference with the previous paradigm called LPP is the target data used in the newtork training: given groaund truth images in the first case, reconstructed images by means of an MBIR method in the second case.</p>
+<p><strong>Deep Guess acceleration for explainable image reconstruction in sparse-view CT</strong>
+(Elena Loli Piccolomini, Davide Evangelista, and Elena Morotti. “Deep Guess acceleration for explainable image reconstruction in sparse-view CT.” arXiv preprint arXiv:2412.01703 (2024).)</p>
+<p>Non-convex regularization methods, such as TpV, are very effective to remove noise and artifacts, but preserving edges and structures. Their drawback is the fact that, since they are non-convex, they can have more local minima and the general optmization algorithms that we use for solving the minimization problem converge to a single local minimum. We don’t have any guarantee that the convergence point is near the global minimum.</p>
+<p>If we have a good approximation of the solution, we can use it as the initial guess of the optimization algorithm for solving the minimization problem. This dramatically increases the probability of converging to the global minimum or at least to a local minimum near the global one.</p>
+<p>The idea is to use a convolutional neural network, ResUNet, trained on ground truth images (or good reconstructions as in RISING) to estimate the initial guess.</p>
+<figure class="align-default">
+<img alt="../_images/hybrid2.png" src="../_images/hybrid2.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid2.png"  width="600">
+</p>
+<p>It is a framework based on two steps:</p>
+<ol class="arabic simple">
+<li><p>Compute an approximation of the solution by means of a neural network ( possibly a simple neural network, not so heavy).
+The output of this step is referred to as Deep Guess (DG).</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../_images/hybrid3.png" src="../_images/hybrid3.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid3.png"  width="800">
+</p>
+<p>Summarizing how can the Deep Guess be implemented:</p>
+<figure class="align-default">
+<img alt="../_images/hybrid10.png" src="../_images/hybrid10.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid10.png"  width="700">
+</p>
+<ol class="arabic simple" start="2">
+<li><p>The second step refines the quality of image computed by the DG by applying to it some iterations of an iterative optimization algorithm solving the non-convex minimization problem:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[min_x ||Ax-y^{\delta}||+\lambda TpV(x)\]</div>
+<p>We can use the Chambolle-Pock algorithm for this last step.</p>
+<p>This gives <strong>explainability</strong> to the result obtained as the convergence point (or near it) of an optimizatiomn algorithm.</p>
+<p>Some results on Mayo dataset:</p>
+<figure class="align-default">
+<img alt="../_images/hybrid11.png" src="../_images/hybrid11.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid11.png"  width="800">
+</p>
+<figure class="align-default">
+<img alt="../_images/hybrid12.png" src="../_images/hybrid12.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid12.png"  width="700">
+</p>
+<figure class="align-default">
+<img alt="../_images/hybrid13.png" src="../_images/hybrid13.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid13.png"  width="700">
+</p>
+<figure class="align-default">
+<img alt="../_images/hybrid14.png" src="../_images/hybrid14.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid14.png"  width="700">
+</p>
+<p>Some results on Coule dataset (with ellipsis):</p>
+<figure class="align-default">
+<img alt="../_images/hybrid15.png" src="../_images/hybrid15.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid15.png"  width="900">
+</p>
+<p><strong>Spatially adaptive regularization: weighted TV</strong></p>
+<p>(from the paper: Morotti, Elena, et al. “Adaptive Weighted Total Variation Boosted by Learning Techniques in Few-View Tomographic Imaging.” Journal of Scientific Computing 106.3 (2026): 74.)</p>
+<p>MBIR approach with Space variant regularization parameter, i.e. weighted Total Variation:</p>
+<div class="math notranslate nohighlight">
+\[ min_x ||Ax-y^{\delta}||_2^2+\lambda TV_w(x) \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[TV_w(x)=\sum_{i=1}^N w_i \sqrt{(D_h x)_i^2+(D_v x)_i^2}\]</div>
+<p>and <span class="math notranslate nohighlight">\(w=(w_1, w_2, \ldots w_N)\)</span> are the weights.</p>
+<p>To properly choose the weights, basing on other proposals, we set:</p>
+<div class="math notranslate nohighlight">
+\[w=w(\tilde x)=\left(\frac{\eta}{\sqrt{\eta^2+|D \tilde x|^2}}\right)^{1-p}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde x\)</span> must be a good approximation of the graound truth <span class="math notranslate nohighlight">\(x_{GT}\)</span>.</p>
+<p>Thw weights allows the adaptation of the regularizatio effort to the characteristics of the specific image.
+When <span class="math notranslate nohighlight">\((|D \tilde x|)_i=0\)</span> (i.e. when <span class="math notranslate nohighlight">\((\tilde x)_i\)</span> lies in a flat region) then <span class="math notranslate nohighlight">\((w(\tilde x))_i=1\)</span>, resulting in a local component of the Tv precisely weightedby <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>Conversely, when <span class="math notranslate nohighlight">\((|D \tilde x|)_i&gt;&gt;0\)</span> (indicating that pixel i is located at an edge or corresponds to a fine detail) then <span class="math notranslate nohighlight">\((w(\tilde x))_i&lt;&lt;1\)</span>.</p>
+<p>This implies that the local contribute in the TV regularization
+is reduced, thereby allowing the preservation of fine details.</p>
+<figure class="align-default">
+<img alt="../_images/hybrid16.png" src="../_images/hybrid16.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid16.png"  width="900">
+</p>
+<p>The <em>reconstructor</em> <span class="math notranslate nohighlight">\(\Psi\)</span> computes the image <span class="math notranslate nohighlight">\(\tilde x\)</span>.In principle is any rconstruction method but we can plug in a neural network, that certainly computes an approximation <span class="math notranslate nohighlight">\(\tilde x\)</span> of <span class="math notranslate nohighlight">\(x_{GT}\)</span> with great accuracy.</p>
+<p>For example, in a Computed Tomography task we can compute <span class="math notranslate nohighlight">\(\tilde x\)</span> with the usual framnework:</p>
+<figure class="align-default">
+<img alt="../_images/hybrid17.png" src="../_images/hybrid17.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid17.png"  width="900">
+</p>
+<p>We can use a Residual Unet as neural network, or a Trasnformer.</p>
+<figure class="align-default">
+<img alt="../_images/hybrid23.png" src="../_images/hybrid23.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid23.png"  width="1000">
+</p><p><em>Some results</em></p>
+<p>The ground truth image of the ellipsis data set:</p>
+<figure class="align-default">
+<img alt="../_images/hybrid19.png" src="../_images/hybrid19.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid19.png"  width="500">
+</p>
+<p>Some reconstruction results obtained with different reconstructors <span class="math notranslate nohighlight">\(\Psi\)</span>.</p>
+<figure class="align-default">
+<img alt="../_images/hybrid18.png" src="../_images/hybrid18.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid18.png"  width="700">
+</p>
+<figure class="align-default">
+<img alt="../_images/hybrid20.png" src="../_images/hybrid20.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid20.png"  width="800">
+</p>
+<figure class="align-default">
+<img alt="../_images/hybrid21.png" src="../_images/hybrid21.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid21.png"  width="900">
+</p>
+<figure class="align-default">
+<img alt="../_images/hybrid22.png" src="../_images/hybrid22.png" />
+</figure>
+<p align="center">
+  <img src="immagini_sorgente\hybrid22.png"  width="900">
+</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hybrid2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hybrid methods: unrolling algorithms</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elena Loli Piccolomini
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
